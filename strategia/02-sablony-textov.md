@@ -1,4 +1,4 @@
-# Šablóny textov (v1.1)
+# Šablóny textov (v1.2)
 
 Ukážkové texty k rámcu komunikácie (`01-ramec-komunikacie.md`). Čísla v príkladoch sú ilustračné okrem príbehu stratovej kampane (úspora približne 1 000 €), ktorý je skutočný. Pred použitím nahradiť ilustračné hodnoty reálnymi z Kifra.sk. Na webe a v e-mailoch vykáme; v skupinách a na LinkedIn hovorí zakladateľ v prvej osobe. České verzie sú označené „CZ“ a pred nasadením ich má prečítať rodený hovorca.
 
@@ -40,10 +40,10 @@ Tlačidlo: „Chci vidět ráno se Shop Pilotem (20 min)“
 Používa sa na webe, v ukážke aj v príspevkoch. Vždy štyri riadky: čo, z čoho, prečo, ak neurobíte.
 
 ```
-1. Pozastavte kampaň „Levanduľa – Shopping“. Produkt je vypredaný.
-   Z čoho:        sklad 0 ks od utorka; kampaň minula 38 € za 3 dni, 0 objednávok.
-   Prečo:         platíte za kliky, ktoré nemôžu skončiť nákupom; naskladnenie o 6 dní.
-   Ak neurobíte:  približne 13 € denne, do naskladnenia približne 78 €.
+1. Dočasne skryte produkt „Levanduľa 500 ml“. Je vypredaný a platená návštevnosť naň stále chodí.
+   Z čoho:        sklad 0 ks od utorka; za 3 dni 120 platených návštev stránky produktu, 0 objednávok; odhad minutých peňazí 38 €.
+   Prečo:         platíte za návštevy, ktoré nemôžu skončiť nákupom; skrytý produkt vypadne z reklamného katalógu; naskladnenie o 6 dní.
+   Ak neurobíte:  približne 13 € denne, do naskladnenia približne 78 €. Po naskladnení produkt znovu zviditeľnite.
 ```
 
 Druhý príklad, skutočný príbeh (doplniť reálne hodnoty):
@@ -69,7 +69,7 @@ mám e-shop s vôňami do prania na Shoptete (Kifra.sk) a robím nástroj pre e-
 
 Pri pohľade na váš e-shop som si všimol, že v Meta Ad Library máte aktívnu reklamu na [produkt], ktorý je na webe označený ako vypredaný. Platíte za kliky, ktoré nemôžu skončiť nákupom.
 
-Toto je jedna z desiatok vecí, ktoré Shop Pilot sleduje každú noc, spolu so skutočným ziskom za každý deň (po reklame, tovare, doprave a fixných nákladoch). Mne odhalil kampaň s vysokým ROAS, ktorá bola v skutočnosti stratová; úspora približne 1 000 €.
+Shop Pilot každú noc zisťuje, či platená návštevnosť chodí na produkty, ktoré sa nedajú kúpiť, a prepočítava skutočný zisk kampaní po tovare, doprave, poplatkoch a fixných nákladoch. Mne odhalil kampaň s vysokým ROAS, ktorá bola v skutočnosti stratová; úspora približne 1 000 €.
 
 Ak chcete, ukážem vám za 20 minút, ako vyzerá ráno s Shop Pilotom, na reálnych číslach môjho e-shopu. Nič nepripravujete a nič nezdieľate.
 
@@ -88,7 +88,7 @@ mám e-shop s vůněmi do praní na Shoptetu (Kifra.sk) a stavím nástroj pro e
 
 Při pohledu na váš e-shop jsem si všiml, že v Meta Ad Library máte aktivní reklamu na [produkt], který je na webu označený jako vyprodaný. Platíte za kliky, které nemohou skončit nákupem.
 
-To je jedna z desítek věcí, které Shop Pilot hlídá každou noc, spolu se skutečným ziskem za každý den (po reklamě, zboží, dopravě a fixních nákladech). Mně odhalil kampaň s vysokým ROAS, která byla ve skutečnosti ztrátová; úspora zhruba 1 000 €.
+Shop Pilot každou noc zjišťuje, jestli placená návštěvnost chodí na produkty, které se nedají koupit, a přepočítává skutečný zisk kampaní po zboží, dopravě, poplatcích a fixních nákladech. Mně odhalil kampaň s vysokým ROAS, která byla ve skutečnosti ztrátová; úspora zhruba 1 000 €.
 
 Jestli chcete, ukážu vám za 20 minut, jak vypadá ráno se Shop Pilotem, na reálných číslech mého e-shopu. Nic nepřipravujete a nic nesdílíte.
 
@@ -146,9 +146,9 @@ Bez odkazu v texte. Produkt spomenúť až v komentároch alebo v správe.
 
 > Skontrolujte si dnes jednu vec: máte kampaň na produkt, ktorý je vypredaný?
 >
-> U mňa (Kifra.sk) to bola levanduľa. Kampaň bežala 3 dni po vypredaní, 38 € za kliky, 0 objednávok. Malé číslo. Ale ak máte 200 produktov a 30 kampaní, stane sa to každý týždeň niekomu z nás.
+> U mňa (Kifra.sk) to bola levanduľa. Platená návštevnosť chodila na jej stránku ešte 3 dni po vypredaní: 120 návštev, asi 38 €, 0 objednávok. Malé číslo. Ale ak máte 200 produktov a 30 kampaní, stane sa to každý týždeň niekomu z nás.
 >
-> Ako to strážim: každú noc porovnám sklad v Shoptete s aktívnymi kampaňami a ráno mám zoznam. Ak vás zaujíma, ako to mám nastavené, napíšte do komentára.
+> Ako to strážim: každú noc zistím, či platená návštevnosť chodí na produkt, ktorý sa nedá kúpiť, a ráno ho dočasne skryjem, kým nepríde tovar. Ak vás zaujíma, ako to mám nastavené, napíšte do komentára.
 
 ---
 

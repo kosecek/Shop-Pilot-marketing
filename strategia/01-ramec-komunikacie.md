@@ -1,6 +1,6 @@
-# Shop Pilot – rámec komunikácie so zákazníkmi (v1.1)
+# Shop Pilot – rámec komunikácie so zákazníkmi (v1.2)
 
-Stav: návrh, 18. 9. 2026, v1.1 po zapracovaní odpovedí zakladateľa (cena, integrácie, trhy, referencia, spôsob ukážky).
+Stav: návrh, 18. 9. 2026, v1.2 po zapracovaní odpovedí zakladateľa (cena, integrácie, trhy, referencia, spôsob ukážky, hosting) a zoznamu situácií expertného systému.
 Cieľ dokumentu: dostať majiteľa e-shopu od „nepoznám vás“ k „chcem vidieť ukážku“ a dať tejto ceste jednotný jazyk.
 
 **Rozhodnutia a fakty, na ktorých dokument stojí (18. 9. 2026):**
@@ -13,6 +13,7 @@ Cieľ dokumentu: dostať majiteľa e-shopu od „nepoznám vás“ k „chcem vi
 | Referencie | Zatiaľ len Kifra.sk: Shop Pilot odhalil kampaň s vysokým ROAS, ktorá bola v skutočnosti stratová; úspora približne 1 000 € |
 | Ukážka | Na mierne upravených reálnych dátach Kifra.sk. Prepojenie dát záujemcu nie je automatizované (niekoľko hodín ručnej práce), preto sa robí až v pilote |
 | Hosting | Google Cloud, každý zákazník má vlastného tenanta (oddelené prostredie); región overiť |
+| Pravidlá expertného systému | 24 aktívnych situácií v návrhu (zmluva v0.51); v produkte dnes bežia pôvodné pravidlá a mapovanie na situácie je neoverené. Obsah sa publikuje len o tom, čo dnes beží. Knižnica: `03-obsahova-kniznica-situacii.md` |
 
 ---
 
@@ -22,7 +23,7 @@ Cieľ dokumentu: dostať majiteľa e-shopu od „nepoznám vás“ k „chcem vi
 2. **Nepriateľ v komunikácii: riadenie podľa pocitu a podľa ROAS.** Majiteľ vidí tržby a ROAS, ale nevie, koľko včera skutočne zarobil, a nevie, ktorá z dvadsiatich vecí je dnes najdôležitejšia. Náš vlastný dôkaz: kampaň s vysokým ROAS, ktorá bola stratová, úspora približne 1 000 €.
 3. **Najsilnejší hook: ukázať mu číslo o jeho e-shope, ktoré nepozná.** Skutočný denný zisk a cena nekonania. Nie sľuby, konkrétny výpočet, ktorý si vie overiť.
 4. **Žiadosť o prezentáciu prerámcujeme na „ukážku rána s Shop Pilotom“:** 20 minút, na reálnych číslach reálneho e-shopu (Kifra.sk), záujemca nič nepripravuje. To, že ukážka nebeží na jeho dátach, nie je slabina, ale nízky prah: žiadne prístupy, žiadna práca. Jeho vlastné dáta prídu v pilote, ktorý je platený, a preto sa ručný onboarding oplatí.
-5. **Motor obsahu: každé pravidlo expertného systému = jeden príbeh** (situácia → čo to stojí → čo urobiť dnes). Desiatky pravidiel znamenajú desiatky konkrétnych, overiteľných príspevkov, e-mailov a neskôr reklám bez vymýšľania.
+5. **Motor obsahu: každá situácia expertného systému = jeden príbeh** (situácia → čo to stojí → čo urobiť dnes). Expertný systém má 24 aktívnych situácií s hotovými názvami v jazyku majiteľa a štyri otázky, ktoré sú kostrou všetkého: Kde strácam? Kde uniká hodnota? Kde pritlačiť? Môžem veriť dátam? Knižnica príbehov je v `03-obsahova-kniznica-situacii.md`; publikujeme len to, čo produkt dnes reálne robí.
 6. **Hlas: e-shopár e-shopárom.** Zakladateľ s vlastným e-shopom (Kifra.sk) hovorí v prvej osobe a s číslami. Vizuál ostáva prémiový podľa brand manuálu, tón je vecný a ľudský.
 7. **Cieľovka je ostrá: e-shopy na Shoptete v SK a CZ s obratom 150 tis. – 3 mil. €, ktoré platia za Google alebo Meta reklamu.** Shoptet je zároveň kvalifikačný filter, personalizačný háčik v outbounde aj distribučný kanál (skupiny používateľov, doplnky). Záujemcov mimo Shoptetu zbierame na čakaciu listinu podľa platformy, čo určí poradie ďalších integrácií.
 8. **Cena 100 € mesačne, transparentne, ukotvená vlastným príbehom:** „Jedna zle nastavená kampaň ma stála približne 1 000 €. Shop Pilot stojí 100 € mesačne.“ Sedí presne medzi lacné profit aplikácie (35 – 149 USD) a atribučné platformy (od 219 USD).
@@ -178,6 +179,8 @@ Brandový claim „Always two steps ahead“ (v slovenčine „Vždy o dva kroky
 
 ### 4.2 Tri piliere a dôkazy
 
+Kostra ranného briefingu, ukážky a landing page sú štyri otázky majiteľa z expertného systému: **Kde strácam? Kde uniká hodnota? Kde pritlačiť? Môžem veriť dátam?** Tri piliere nižšie sú argumenty, prečo tomu veriť; štyri otázky sú to, čo zákazník uvidí každé ráno.
+
 **Pilier 1: Jedno miesto, jedno číslo: skutočný denný zisk.**
 - Shoptet, reklama, sklad a náklady v jednom pohľade.
 - Zisk za každý deň, nie tržby a nie ROAS.
@@ -205,7 +208,7 @@ Brandový claim „Always two steps ahead“ (v slovenčine „Vždy o dva kroky
 
 **Robíme:** konkrétne čísla, krátke vety, vykanie na webe a v e-mailoch, prvá osoba zakladateľa v komunitách a na LinkedIn, slovenské výrazy (zisk, marža, sklad, náklady), bolesť pomenovať priamo, vždy ukázať výpočet, o ukážke hovoriť pravdivo („reálne dáta môjho e-shopu, niektoré hodnoty upravené“).
 
-**Nerobíme:** „AI-powered“, „revolučný“, „all-in-one platforma“, „business intelligence“, „dashboard“ ako hlavné slovo, „insights“, „actionable“, sľuby percent rastu bez zdroja, porovnávanie s konkurentmi, ktorých zákazník nepozná, sľuby integrácií, ktoré ešte nie sú.
+**Nerobíme:** „AI-powered“, „revolučný“, „all-in-one platforma“, „business intelligence“, „dashboard“ ako hlavné slovo, „insights“, „actionable“, sľuby percent rastu bez zdroja, porovnávanie s konkurentmi, ktorých zákazník nepozná, sľuby integrácií, ktoré ešte nie sú, sľuby zaparkovaných schopností (odporúčania cien, balíčky, sezónnosť, automatické oslovovanie zákazníkov) a tvrdenia, ktoré systém zámerne nerobí (napríklad mapovanie kampane na produkt).
 
 **Slovník značky (pilotná metafora z brand manuálu, používať striedmo a konzistentne):**
 
@@ -228,7 +231,7 @@ Majiteľ e-shopu nechce prezentáciu softvéru. Chce vedieť o svojom e-shope ni
 | # | Hook | Text (jadro) | Segment | Kanál | Čo meriame |
 |---|---|---|---|---|---|
 | 1 | Skutočný zisk | „Viete, koľko ste zarobili včera? Nie tržby. Zisk po reklame, tovare, doprave a fixných nákladoch. Väčšina e-shopov to zistí o mesiac z účtovníctva.“ | A, B | skupiny, LinkedIn, cold e-mail | odpovede, kliky na kalkulačku |
-| 2 | Cena nekonania | „Bestseller vypredaný, kampaň naň beží ďalej. Každý deň platíte za kliky, ktoré nemôžu skončiť nákupom.“ (doplniť reálne číslo z Kifra.sk) | B, C | cold e-mail, skupiny, neskôr reklama | odpovede, žiadosti o ukážku |
+| 2 | Cena nekonania | „Bestseller vypredaný, platená návštevnosť naň chodí ďalej. Každý deň platíte za návštevy, ktoré nemôžu skončiť nákupom.“ (doplniť reálne číslo z Kifra.sk) | B, C | cold e-mail, skupiny, neskôr reklama | odpovede, žiadosti o ukážku |
 | 3 | ROAS ilúzia | „Moja najlepšia kampaň podľa ROAS bola stratová. Zistil som to, až keď som si zisk spočítal po všetkých nákladoch. Stálo ma to asi 1 000 €.“ | B | LinkedIn, skupiny, blog (break-even ROAS), webinár | kliky, kalkulačka, ukážky |
 | 4 | 5 minút ráno | „40 minút denne preklikávania Ads, Meta, GA4 a skladu. Alebo 5 minút a tri veci, ktoré dnes urobiť.“ | A | skupiny, krátke video | zhliadnutia, odpovede |
 | 5 | E-shopár e-shopárom | „Postavil som to pre svoj e-shop s vôňami do prania, lebo som ráno nevedel, čo riešiť. Teraz to dávam ďalším e-shopom na Shoptete.“ | A, B | LinkedIn, podcasty, konferencie | dosah, pozvania, ukážky |
@@ -253,9 +256,9 @@ Každé pravidlo expertného systému prepíšeme do jednotného formátu:
 4. **Čo urobiť dnes.**
 5. **Ako to Shop Pilot stráži** (jedna veta na konci, nie na začiatku).
 
-Prvý príbeh je hotový: kampaň s vysokým ROAS, ktorá bola po započítaní tovaru, dopravy a poplatkov stratová, a približne 1 000 € úspory po jej oprave. Ďalšie témy (nahradiť reálnymi pravidlami zo systému): kampaň beží na vypredaný produkt; produkt s najvyšším podielom reklamy má po nákladoch zápornú maržu; zásoba bestselleru vydrží 9 dní pri dodacej lehote 14 dní; mŕtve zásoby viažu X € hotovosti; konverzný pomer klesol tri dni po sebe pri rovnakej návštevnosti; CPC v Meta vyskočilo o 40 % týždeň k týždňu; náklady na dopravu na objednávku rastú rýchlejšie než priemerná objednávka.
+Knižnica je hotová v `03-obsahova-kniznica-situacii.md`: 24 kariet situácií (9 × Kde strácam, 11 × Kde uniká hodnota, 4 × Kde pritlačiť), 8 prierezových príbehov o princípoch systému (termín pred sumou, relatívne prahy, kontrola merania, spojené karty sklad + reklama, životný cyklus produktu, ochrana kontaktov, determinizmus, žiadne dvojité počítanie strát) a séria „Čo vám Shop Pilot nepovie“ zo zaparkovaných situácií. Prvý príbeh s reálnym číslom: kampaň s vysokým ROAS, ktorá bola stratová (približne 1 000 €).
 
-Výstup z jedného pravidla: 1 príspevok (Facebook alebo LinkedIn) + 1 e-mail do sekvencie + 1 slide do ukážky + neskôr 1 reklama. Pri 40 pravidlách je to obsah na rok bez vymýšľania a každý kus je overiteľný, čo je v súlade s hodnotou „spoľahlivosť“.
+Publikačné pravidlo: von idú len karty o tom, čo produkt dnes reálne robí (pôvodné pravidlá R2, R3, R4, DR1 až DR10, DR12); karty situácií, ktoré sú zatiaľ len v návrhu, čakajú na nasadenie. Každá karta má pred publikovaním dostať reálne číslo z Kifra.sk alebo pilotu. Výstup z jednej karty: 1 príspevok + 1 e-mail do sekvencie + 1 slide do ukážky + 1 krátke video + neskôr 1 reklama.
 
 ---
 
@@ -290,7 +293,7 @@ Ukážka beží na mierne upravených reálnych dátach Kifra.sk. Na otázku, č
 |---|---|---|
 | 0 – 5 | Otázka: „Aké tri rozhodnutia dnes robíte v Exceli alebo cez päť nástrojov?“ Zapísať ich. Krátko: platforma, reklamné kanály, kto rieši PPC, sklad. | Zistiť jeho bolesti, kvalifikovať (Shoptet? reklama?), získať slová, ktorými to opisuje |
 | 5 – 8 | Príbeh: ráno pred Shop Pilotom (päť záložiek, 40 minút) a stratová kampaň s vysokým ROAS, približne 1 000 €. | Dôvera cez vlastnú skúsenosť |
-| 8 – 18 | Ranný briefing naživo: 3 až 5 akcií, pri každej čo, z čoho, prečo, dopad. Ukázať kliknutie do kokpitu na jednu z nich. Pri každej akcii sa spýtať: „Stalo sa vám to niekedy?“ | Nech vidí svoj e-shop v našich dátach |
+| 8 – 18 | Ranný briefing naživo, vedený štyrmi otázkami: Kde strácam? (kampaň stratová po nákladoch), Kde uniká hodnota? (vypredaný produkt s platenou návštevnosťou ako spojená karta: „nezastavujte kampaň naslepo, problém je sklad“), Kde pritlačiť? (produkt s rastúcim dopytom), Môžem veriť dátam? (čo sa stane, keď GA4 nesedí s objednávkami). Pri každej akcii: čo, z čoho, prečo, dopad; kliknúť do kokpitu na jednu z nich. Pri každej sa spýtať: „Stalo sa vám to niekedy?“ | Nech vidí svoj e-shop v našich dátach a pochopí, že nejde o alarm |
 | 18 – 22 | Vrátiť sa k jeho trom rozhodnutiam: ktoré pravidlá by ich pokrývali; čo by videl ráno on. | Preklopenie z „pekné“ na „moje“ |
 | 22 – 27 | Ponuka pilotu (6.4): čo treba z jeho strany, kedy uvidí prvý briefing, cena, garancia, zakladajúci zákazníci. Dohodnúť termín onboardingu hneď na hovore. | Záväzok s termínom |
 | 27 – 30 | Otázky. Po hovore do hodiny e-mail s rekapituláciou a odkazom na prístupy. | Neprerušiť tempo |
@@ -308,7 +311,7 @@ Ručný onboarding stojí niekoľko hodín. Preto ho robíme len pre záujemcov,
 
 1. **Hero:** titulok „Každé ráno viete, čo urobiť, aby váš e-shop zarobil viac.“ Podtitulok: „Pre e-shopy na Shoptete. Shop Pilot v noci pospája Shoptet, Google Ads, Meta Ads a GA4 s nákladmi, spočíta skutočný zisk za každý deň a ráno vám dá 3 najdôležitejšie akcie: prečo, z čoho vyplývajú a koľko vás stojí, keď ich odložíte.“ Primárna výzva „Chcem vidieť ráno s Shop Pilotom (20 min)“, sekundárna „Vypočítať skutočný zisk“. Vizuál: skutočný ranný briefing (screenshot), nie ilustrácia.
 2. **Problém:** tri karty (dáta v šiestich záložkách; ROAS nie je zisk; zisk až z účtovníctva).
-3. **Ako vyzerá ráno s Shop Pilotom:** tri kroky (prepojíte Shoptet a reklamné účty → v noci prepočítame → ráno tri akcie), s ukážkou jednej akcie: čo, prečo, z čoho, dopad.
+3. **Ako vyzerá ráno s Shop Pilotom:** tri kroky (prepojíte Shoptet a reklamné účty → v noci prepočítame → ráno tri akcie) a štyri otázky, na ktoré briefing odpovedá: Kde strácam? Kde uniká hodnota? Kde pritlačiť? Môžem veriť dátam? S ukážkou jednej akcie: čo, prečo, z čoho, dopad.
 4. **Prečo tomu veriť:** deterministický systém, každý návrh ukáže dáta, žiadne halucinácie; read-only prístupy, vlastný tenant na Google Cloud; príbeh zakladateľa a stratovej kampane s vysokým ROAS (približne 1 000 €).
 5. **Pre koho:** e-shopy na Shoptete, 150 tis. – 3 mil. €, Google alebo Meta Ads, vlastný sklad. Pod tým: „Nie ste na Shoptete? Nechajte nám e-mail a platformu, dáme vedieť, keď pribudne.“
 6. **Cena:** „100 € mesačne, bez viazanosti. Jedna zle nastavená kampaň ma stála približne 1 000 €.“ Pre CZ verziu aj v Kč. Garancia, ak bude schválená.
@@ -341,6 +344,8 @@ Ručný onboarding stojí niekoľko hodín. Preto ho robíme len pre záujemcov,
 | „Som na to malý.“ | Postavil som to pre e-shop so 150 tis. € obratu. | príbeh zakladateľa |
 | „Nie som na Shoptete.“ | Zatiaľ podporujeme Shoptet. Nechajte mi platformu a e-mail; poradie ďalších integrácií určuje dopyt. | čakacia listina |
 | „Prečo nie Triple Whale alebo Lifetimely?“ (segment C) | Sú pre Shopify a americké DTC značky s performance tímom, v angličtine a USD, bez Shoptetu, a nepovedia, čo urobiť dnes. | porovnávacia tabuľka (3.3) |
+| „Nebude ma to zahlcovať alarmami?“ | Netriedi podľa výšky sumy, ale podľa termínu: hneď, dnes, tento týždeň, sledovať. Hľadá aj príležitosti (kde pritlačiť), nie len straty. Keď nie sú dáta, mlčí. | ukážka: štyri otázky, príklad príležitosti |
+| „Čo s údajmi mojich zákazníkov (GDPR)?“ | Shop Pilot neukladá kontaktné údaje zákazníkov a nikoho neoslovuje. Povie, koho sa oplatí osloviť; oslovenie robíte vy zo Shoptetu. (overiť stav v dátovom sklade) | stránka o bezpečnosti |
 
 ---
 
@@ -350,7 +355,7 @@ Ručný onboarding stojí niekoľko hodín. Preto ho robíme len pre záujemcov,
 
 - **Zdroj:** zoznam e-shopov z Heureky (existuje na Drive), obohatiť o: **platforma = Shoptet** (zistiteľná zo zdrojového kódu stránky, napr. odkazy na doménu myshoptet.com), kategória, počet recenzií (odhad veľkosti), aktívna reklama (Meta Ad Library, Google Ads Transparency Center), odhad tržieb (Finstat pre SK, obdobné registre pre CZ), kontakt na majiteľa (obchodný register, LinkedIn).
 - **Kvalifikácia:** len Shoptet e-shopy s aktívnou reklamou a vlastným skladom, odhad tržieb 300 tis. – 3 mil. €.
-- **Personalizácia:** jedna konkrétna vec z ich verejných dát. Najlepší otvárač: bežiaca kampaň na produkt, ktorý je na webe označený ako vypredaný, lebo je to priamo naše pravidlo a dá sa overiť za minútu. Druhý: „váš e-shop beží na Shoptete, Shop Pilot je preň stavaný“.
+- **Personalizácia:** jedna konkrétna vec z ich verejných dát. Najlepší otvárač: bežiaca reklama na produkt, ktorý je na webe označený ako vypredaný (ručná kontrola v Meta Ad Library), lebo je to ručná verzia našej situácie „platený traffic smeruje na nepredajný produkt“ a dá sa overiť za minútu. Druhý: „váš e-shop beží na Shoptete, Shop Pilot je preň stavaný“.
 - **Sekvencia:** e-mail 1 (hook) → po 3 dňoch e-mail 2 (iné pravidlo alebo príbeh stratovej kampane) → po 4 dňoch LinkedIn alebo telefón → e-mail 3 (rozlúčka s checklistom).
 - **Jazyk:** slovenským e-shopom po slovensky, českým po česky (Shoptet má väčšinu základne v Česku, takže česká verzia textov je potrebná od prvého mesiaca).
 - **Kapacita:** 30 až 50 personalizovaných kontaktov týždenne pre jedného človeka.
@@ -428,12 +433,15 @@ Vyriešené v v1.1: cena (100 €), integrácie (Shoptet), trhy (SK a CZ), refer
 4. **Onboarding:** koľko hodín dnes trvá a čo z toho sa dá automatizovať ako prvé; od toho závisí, kedy sa dá spustiť bezplatná analýza na dátach záujemcu (5.3, bod 5).
 5. **Cena v Kč** pre český web a e-maily.
 6. **Kapacita:** hodiny týždenne na obsah, outbound, ukážky a onboarding; koľko pilotov mesačne je zvládnuteľných.
-7. **Zoznam pravidiel expertného systému:** základ motora obsahu (kap. 5.4). Stačí názov pravidla, čo sleduje a ako počíta dopad.
+7. **Zoznam živých pravidiel:** zoznam situácií je dodaný (zmluva v0.51), ale mapovanie pôvodných pravidiel na situácie je v nej označené ako neoverené. Potrebujem potvrdiť, ktoré situácie produkt dnes reálne pokrýva; od toho závisí, ktoré karty z knižnice smú von.
 8. **Detail príbehu stratovej kampane** pre obsah: kanál (Google alebo Meta), ROAS, skutočná marža, ako dlho bežala, čo sa zmenilo po oprave. Čím konkrétnejšie, tým dôveryhodnejšie.
+9. **Príbeh PMAG/VEL:** rozhodnúť, či sa smie použiť incident z júna 2026 (vypredaný top produkt, ktorý pôvodný systém nehlásil) ako príbeh o dôslednosti (knižnica, kap. 4).
+10. **Lokalizácia anglických výrazov v názvoch situácií** (Hot seller, Emerging bestseller, cash, traffic, landing, checkout, hidden) pred zobrazením zákazníkom; marketing ich zatiaľ používa doslovne, aby sedeli s produktom.
 
 ---
 
 ## Zmeny
 
+- **v1.2 (18. 9. 2026):** zapracovaný zoznam situácií expertného systému (zmluva v0.51, 24 aktívnych situácií): štyri otázky majiteľa ako kostra posolstiev, ukážky a landing page; nová obsahová knižnica `03-obsahova-kniznica-situacii.md` s publikačným pravidlom „len to, čo produkt dnes robí“; opravené texty, ktoré sľubovali mapovanie kampane na produkt (produkt vidí platenú návštevnosť na stránke nedostupného produktu a odporúča dočasné skrytie); nové námietky (alarmy, GDPR).
 - **v1.1 (18. 9. 2026):** zapracované odpovede zakladateľa: cena 100 € (jedno pásmo), integrácia len Shoptet, trhy SK a CZ, referencia Kifra.sk (stratová kampaň s vysokým ROAS, úspora približne 1 000 €), ukážka na dátach Kifra.sk namiesto analýzy na dátach záujemcu, hosting Google Cloud s vlastným tenantom pre každého zákazníka. Pridaný scenár ukážky (6.3), ponuka pilotu a program zakladajúcich zákazníkov (6.4), čakacia listina pre platformy, česká verzia textov v pláne.
 - **v1 (18. 9. 2026):** prvý návrh.
