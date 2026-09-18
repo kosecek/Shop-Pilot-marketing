@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="sk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop Pilot — medzinárodná konkurenčná mapa</title>
+  <style>
+    :root { --ink:#172033; --muted:#5d687b; --line:#dfe5ee; --bg:#f7f9fc; --card:#fff; --navy:#152a4c; --blue:#2563eb; --soft:#edf4ff; --amber:#a85b08; }
+    * { box-sizing:border-box } body { margin:0; color:var(--ink); background:var(--bg); font:15px/1.55 Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    main { max-width:1150px; margin:0 auto; padding:48px 28px 64px; } h1,h2,h3 { line-height:1.2; margin:0 0 12px } h1 { font-size:32px; letter-spacing:-.03em; } h2 { font-size:20px; margin-top:38px; } h3 { font-size:16px; } p { margin:0 0 12px } .hero { color:#fff; background:linear-gradient(125deg,#13294b,#2563eb); padding:34px; border-radius:18px; box-shadow:0 10px 30px #18386733; } .hero p { color:#dce9ff; max-width:850px; } .meta { margin-top:17px; color:#bcd3ff; font-size:13px; } .note { border-left:4px solid var(--blue); background:var(--soft); padding:14px 16px; border-radius:0 10px 10px 0; } .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; } .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:17px; } .price { color:var(--blue); font-size:22px; font-weight:700; margin:8px 0; } .muted { color:var(--muted) } .tag { display:inline-block; padding:3px 8px; border-radius:999px; background:#edf1f8; color:#42516a; font-size:12px; font-weight:650; } table { width:100%; border-collapse:separate; border-spacing:0; background:var(--card); border:1px solid var(--line); border-radius:12px; overflow:hidden; } th,td { vertical-align:top; text-align:left; padding:13px 14px; border-bottom:1px solid var(--line); } th { background:#f1f5fa; font-size:13px; color:#40506a; } tr:last-child td { border-bottom:0 } a { color:#1554c0; font-weight:650; text-decoration:none; } a:hover { text-decoration:underline; } ul { margin:7px 0 0; padding-left:19px; } .warning { color:#7d4a05; background:#fff7e8; border-left:4px solid #e9a23b; padding:14px 16px; border-radius:0 10px 10px 0; } .sources li { margin:7px 0; } @media(max-width:800px) { main{padding:24px 15px 42px}.grid{grid-template-columns:1fr} h1{font-size:27px} table{display:block; overflow-x:auto; white-space:normal} }
+  </style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <h1>Shop Pilot — medzinárodná konkurenčná mapa</h1>
+    <p>Segment: e-commerce dashboardy, reporting ziskovosti, atribúcia a rozhodovacia analytika. Ceny sú verejné ceny v USD za mesiac, ak zdroj neuvádza inak.</p>
+    <div class="meta">17. september 2026 · verejné primárne zdroje · 5 hlavných konkurentov v matici</div>
+  </section>
+
+  <h2>Context</h2>
+  <p>Predpoklad: Shop Pilot rieši pre e-shopy jednotný dashboard/reporting nad obchodnými, produktovými a marketingovými dátami. Bez produktového materiálu Shop Pilotu je toto trhová mapa, nie úplný 1:1 battlecard.</p>
+  <div class="note"><strong>Hlavný záver.</strong> Medzinárodný trh je rozdelený na lacné Shopify profit apps, DTC operačné/attribution platformy a drahé omnichannel data platformy. Najväčší cenový a produktový tlak v strednom segmente vytvára Triple Whale; najnižšiu cenu tlačia TrueProfit a Lifetimely; Daasity posúva kategóriu do data-warehouse/enterprise priestoru.</div>
+
+  <h2>Segmentácia podľa veľkosti zákazníka a ceny</h2>
+  <div class="grid">
+    <article class="card"><span class="tag">Malé e-shopy</span><h3>Profit-first Shopify apps</h3><div class="price">$35–$149</div><p class="muted">Metriky zisku, P&amp;L, COGS, produktová marža a základné LTV. Predaj je samoobslužný, cenotvorba najčastejšie podľa objednávok.</p></article>
+    <article class="card"><span class="tag">Rastúce DTC značky</span><h3>Attribution &amp; operating layer</h3><div class="price">$199–$749+</div><p class="muted">Multi-touch atribúcia, first-party pixel, kreatíva, akvizičné a retenčné dáta, AI odporúčania. Cena sa typicky škáluje s GMV alebo počtom obchodov.</p></article>
+    <article class="card"><span class="tag">Veľké/omnichannel</span><h3>Data platform &amp; BI</h3><div class="price">$1,499–$1,999+</div><p class="muted">DTC + marketplace + retail, dátová infraštruktúra, vlastné reporty a konzultácie. Enterprise sa nacenňuje individuálne.</p></article>
+  </div>
+
+  <h2>Competitor snapshot</h2>
+  <table>
+    <thead><tr><th>Konkurent</th><th>Segment a cena</th><th>Čo predáva</th><th>Kde je silný</th><th>Oddelenie pre Shop Pilot</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://trueprofit.io/pricing">TrueProfit</a></td><td>Malé e-shopy.<br><strong>$35</strong> / 300 objednávok; <strong>$60</strong> / 600 objednávok; príplatok za ďalšie objednávky.</td><td>Real-time profit dashboard, LTV, COGS a export dashboardu/P&amp;L.</td><td>Veľmi nízka vstupná cena a jednoduché metriky zisku.</td><td>Presah mimo Shopify/nižšia manuálnosť, kvalitnejšie lokálne integrácie a odporúčania k rozhodnutiam — nie len výkaz zisku.</td></tr>
+      <tr><td><a href="https://apps.shopify.com/lifetimely-lifetime-value-and-profit-analytics">Lifetimely</a></td><td>Malé až stredné DTC/CPG značky.<br>Free; <strong>$49</strong> / 500, <strong>$149</strong> / 3k, <strong>$299</strong> / 7k objednávok.</td><td>P&amp;L, LTV, kohorty, CAC, forecasting, produktové a retention reporty.</td><td>Zrelá analytická vrstva nad zákazníkom a retentionom, veľa marketingových integrácií.</td><td>Zdôrazniť lokálne e-commerce dáta, rýchle zavedenie a profitabilitu produktov/kanálov bez DTC anglo-amerického stacku.</td></tr>
+      <tr><td><a href="https://www.triplewhale.com/pricing">Triple Whale</a></td><td>Rastúce až veľké DTC značky.<br>Free; Foundation <strong>od $219</strong>; Automate <strong>od $749</strong>; Enterprise individuálne. Cena závisí od ročného GMV.</td><td>Attribution, pixel, BI dashboardy, segmenty, SQL editor, first-party activation a AI operátor Moby.</td><td>Najkompletnejšie spojenie merania, vlastného BI, AI a automatizácie; silná značka v DTC.</td><td>Nekopírovať široký feature set. Vyhrať na zrozumiteľnosti, lokálnych zdrojoch a rýchlych profit-first pracovných postupoch.</td></tr>
+      <tr><td><a href="https://outoftheblue.ai/pricing/">Out Of The Blue / Consequential</a></td><td>Stredné až väčšie Shopify značky.<br>Free pod $1M GMV; <strong>$199</strong> Starter, <strong>$499</strong> Growth, <strong>$749</strong> Professional pri zobrazenom GMV páse.</td><td>Funnel a atribúcia, 160+ konektorov, LTV, creative diagnostics, signal recovery a P&amp;L.</td><td>Silná vrstva marketingového merania, alertov a diagnostiky kreatív/ROAS.</td><td>Pre značky bez veľkého paid-media tímu postaviť case na obchodnej ziskovosti, zásobách a každodenných rozhodnutiach, nie len na atribúcii.</td></tr>
+      <tr><td><a href="https://www.daasity.com/pricing-2026">Daasity</a></td><td>Stredné až enterprise omnichannel značky.<br>Starter Essentials <strong>$1,499</strong>; Essentials <strong>$1,999</strong>; Enterprise individuálne.</td><td>Dátová platforma pre DTC, Amazon, retail a marketplaces; konektory, dashboardy, reporty a contribution margin.</td><td>Šírka omnichannel dát, dátová infraštruktúra a customizácia.</td><td>V SMB/strednom segmente: hotový produkt a kratší time-to-value. Pri enterprise: nepodceňovať požiadavku na datový model, retail a vlastné integrácie.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Comparison matrix takeaways</h2>
+  <table>
+    <thead><tr><th>Oblasť</th><th>Stav Shop Pilotu (predpoklad)</th><th>Hlavný tlak</th><th>Čo overiť v discovery</th></tr></thead>
+    <tbody>
+      <tr><td>Vstupná cena</td><td>Príležitosť byť pod enterprise BI a nad lacnou "profit app".</td><td>TrueProfit a Lifetimely tlačia cenu už od $35–$49.</td><td>Je problém zákazníka sledovanie zisku, alebo dôveryhodnosť dát a akčné rozhodnutia?</td></tr>
+      <tr><td>Attribution &amp; marketing</td><td>Riziko, ak je produkt len dashboard.</td><td>Triple Whale a OTB predávajú pixel, atribúciu, AI a alerty ako jeden operačný systém.</td><td>Potrebujú multi-touch atribúciu, server-side meranie alebo stačí profit po reálnych objednávkach?</td></tr>
+      <tr><td>Omnichannel a ERP</td><td>Príležitosť alebo medzera podľa integrácií.</td><td>Daasity vyhráva pri retaili, marketplaces a náročnom dátovom modeli.</td><td>Majú retail/veľkoobchod/marketplace alebo len jeden e-shop? Ktoré ERP, sklad a reklamné siete sú povinné?</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Response strategy</h2>
+  <ul>
+    <li><strong>Povedať:</strong> „Neukazujeme len obrat a ROAS; prepájame reálne objednávky, náklady a produktové dáta do rozhodnutí, ktoré vie tím vykonať.“</li>
+    <li><strong>Objasniť:</strong> „Aké tri rozhodnutia dnes robíte v Exceli alebo cez päť oddelených dashboardov?“</li>
+    <li><strong>Dokázať:</strong> Pripraviť ukážku profitability podľa produktu, kanála a obdobia na lokálnych integračných zdrojoch relevantných pre zákazníka.</li>
+  </ul>
+
+  <h2>What not to overclaim</h2>
+  <div class="warning">Ceny Triple Whale a Out Of The Blue závisia od GMV, zvoleného balíka a/alebo kontraktu; vždy ich treba potvrdiť v aktuálnom checkout alebo u predajcu. Shop Pilot nebol dodaný so svojím produktovým briefom, preto „odlíšenie“ vyššie predstavuje odporúčané smerovanie, nie overené porovnanie funkcií. Nové Shopify aplikácie s veľmi nízkou cenou boli z dôvodu slabej nezávislej validácie vynechané z jadrovej matice.</div>
+
+  <h2>Sources</h2>
+  <ul class="sources">
+    <li><a href="https://trueprofit.io/pricing">TrueProfit — pricing</a>: cena, limity objednávok, profit dashboard/LTV/COGS.</li>
+    <li><a href="https://apps.shopify.com/lifetimely-lifetime-value-and-profit-analytics">Lifetimely — Shopify App Store</a>: ceny, limity objednávok, P&amp;L/LTV/kohorty a integrácie.</li>
+    <li><a href="https://www.triplewhale.com/pricing">Triple Whale — pricing</a>: balíky, GMV-based model, atribúcia, dashboardy a Moby.</li>
+    <li><a href="https://outoftheblue.ai/pricing/">Out Of The Blue — pricing</a>: GMV segmenty, ceny a marketingovo-analytický rozsah.</li>
+    <li><a href="https://www.daasity.com/pricing-2026">Daasity — pricing</a>: self-service a enterprise ceny a omnichannel rozsah.</li>
+    <li><a href="https://www.daasity.com/ecommerce-analytics">Daasity — ecommerce analytics</a>: reporting, integrácie a enterprise positioning.</li>
+  </ul>
+  <p class="muted">Zdrojová postura: verejné produktové a pricing stránky; nepoužité CRM, interné dokumenty, meeting transkripty ani sales-intelligence dáta. EXA: 60 vyhľadávacích výsledkov v 8 cielených dotazoch, následne validované na oficiálnych stránkach.</p>
+</main>
+</body>
+</html>
