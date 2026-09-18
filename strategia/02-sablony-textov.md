@@ -1,4 +1,4 @@
-# Šablóny textov (v1.2)
+# Šablóny textov (v1.3)
 
 Ukážkové texty k rámcu komunikácie (`01-ramec-komunikacie.md`). Čísla v príkladoch sú ilustračné okrem príbehu stratovej kampane (úspora približne 1 000 €), ktorý je skutočný. Pred použitím nahradiť ilustračné hodnoty reálnymi z Kifra.sk. Na webe a v e-mailoch vykáme; v skupinách a na LinkedIn hovorí zakladateľ v prvej osobe. České verzie sú označené „CZ“ a pred nasadením ich má prečítať rodený hovorca.
 
@@ -37,13 +37,28 @@ Tlačidlo: „Chci vidět ráno se Shop Pilotem (20 min)“
 
 ## 2. Ukážka jednej akcie (formát ranného briefingu)
 
-Používa sa na webe, v ukážke aj v príspevkoch. Vždy štyri riadky: čo, z čoho, prečo, ak neurobíte.
+Používa sa na webe, v ukážke aj v príspevkoch. Anatómia karty je rovnaká ako v produkte: názov a termín, prečo teraz, čo urobiť ako prvé, dopad, dôkazy (a história). Čísla sú ilustračné; po nasadení slice-u V2 ich nahradia skutočné karty z prehrávky PMAG/VEL.
+
+Spojená karta (sklad + reklama):
 
 ```
-1. Dočasne skryte produkt „Levanduľa 500 ml“. Je vypredaný a platená návštevnosť naň stále chodí.
-   Z čoho:        sklad 0 ks od utorka; za 3 dni 120 platených návštev stránky produktu, 0 objednávok; odhad minutých peňazí 38 €.
-   Prečo:         platíte za návštevy, ktoré nemôžu skončiť nákupom; skrytý produkt vypadne z reklamného katalógu; naskladnenie o 6 dní.
-   Ak neurobíte:  približne 13 € denne, do naskladnenia približne 78 €. Po naskladnení produkt znovu zviditeľnite.
+Dôležitý produkt je nedostupný a stále naň chodí platený traffic                 [hneď]
+Prečo teraz:   Levanduľa 500 ml je od utorka vypredaná (0 ks, žiadne rezervácie) a za 3 dni
+               prišlo na jej stránku 120 platených návštev, 0 objednávok.
+Čo urobiť:     Dočasne nastavte produkt na hidden, aby vypadol z reklamného katalógu a feedu.
+               Po naskladnení ho znovu zviditeľnite. Skontrolujte, či máte alternatívu.
+Dopad:         ušlá marža približne 45 € denne; platená návštevnosť navyše približne 13 € denne (odhad).
+Dôkazy:        stav skladu, predaje za 14 dní, platené návštevy stránky (GA4),
+               história: rastie → dochádzajú zásoby → nedostupný.
+```
+
+Pripomienka po naskladnení (doplnková karta):
+
+```
+Produkt je znovu skladom, ale stále je skrytý                                     [tento týždeň]
+Prečo teraz:   Levanduľa 500 ml má 3 dni po sebe kladný stav (36 ks) a je stále skrytá.
+Čo urobiť:     Skontrolujte, či ju nechcete znovu zviditeľniť.
+Dôkazy:        stav skladu za posledné 3 dni, príznak skrytia, história situácie.
 ```
 
 Druhý príklad, skutočný príbeh (doplniť reálne hodnoty):
@@ -166,7 +181,45 @@ Bez odkazu v texte. Produkt spomenúť až v komentároch alebo v správe.
 
 ---
 
-## 6. Pozvánka na ukážku (po súhlase)
+## 6. Príbeh PMAG/VEL (LinkedIn, dva diely) a kostra prípadovej štúdie
+
+Reálny incident, schválený zakladateľom. Hranaté zátvorky doplniť. Diel 1 sa smie publikovať hneď; diel 2 a prípadová štúdia až po nasadení slice-u V2 do produkcie.
+
+### Diel 1: čo sa stalo
+
+> V júni mi vypredal top produkt. Môj vlastný systém o tom mlčal.
+>
+> [Produkt] robí [X] % tržieb Kifra.sk. 26. júna sa vypredal a nedostupný bol [N] dní. Shop Pilot, ktorý som si postavil práve preto, aby mi každé ráno povedal, čo je najdôležitejšie, mi vtedy hlásil [čo hlásil namiesto toho].
+>
+> Prečo? Starý systém porovnával dopady v eurách s rôznymi časovými oknami a chronické veci potláčal. Vypredaný bestseller mal v jeho očiach menší „dopad“ než pár drobných únikov, ktoré hlásil každý deň. Prehral súťaž, ktorú nikdy nemal hrať.
+>
+> Od nástroja, ktorý má byť spoľahlivý, je to neprijateľné. Tak som prerobil jadro. Ako, o tom v ďalšom príspevku.
+
+### Diel 2: čo sme zmenili
+
+> Ako som prerobil Shop Pilot po tom, čo mi nehlásil vypredaný top produkt.
+>
+> 1. Termín pred sumou. Každá situácia sa najprv triedi podľa toho, dokedy treba rozhodnúť (hneď, dnes, tento týždeň, sledovať), a až potom podľa eur za deň. Nedostupný dôležitý produkt je „hneď“, bez ohľadu na to, koľko malých vecí kričí vedľa.
+> 2. Jeden produkt, tri stavy. Rastie → dochádzajú zásoby → nedostupný. Každý prechod je udalosť, ktorá zruší predchádzajúce „už som to videl“. Chronická situácia už nikdy neutopí novú krízu.
+> 3. Dôležitosť nie je len dopad za deň. Produkt s veľkým podielom na tržbách prejde prahom aj vtedy, keď je denný odhad opatrný.
+> 4. Ak zlyhá import dát, problém nezmizne. Situácia sa zavrie, len keď to detektor výslovne povie.
+> 5. Incident sa stal testom. Dáta z 24. až 30. júna sú trvalý regresný test. Každá nová verzia ich musí prehrať správne, inak nejde do produkcie.
+>
+> Nie je to AI, ktorá sa „učí z chýb“. Sú to pravidlá, ktoré sa dajú čítať, a test, ktorý sa dá spustiť. [Obrázok: skutočná karta z 27. júna.]
+
+### Kostra prípadovej štúdie na web
+
+1. **Nadpis:** „Deň, keď môj systém mlčal: ako vypredaný top produkt zmenil Shop Pilot“.
+2. **Situácia:** Kifra.sk, e-shop s vôňami do prania na Shoptete, produkt s [X] % podielom na tržbách.
+3. **Čo sa stalo:** časová os 24. až 30. júna (rast dopytu, klesajúce pokrytie, vypredanie, naskladnenie), čo v tých dňoch ukazoval pôvodný systém.
+4. **Prečo systém mlčal:** tri dôvody (dopady s rôznymi časovými oknami, chronické potláčanie, dôležitý produkt podhodnotený denným odhadom).
+5. **Čo sme zmenili:** päť bodov z dielu 2.
+6. **Čo vidí majiteľ dnes:** štyri skutočné karty z prehrávky: „Produkt rýchlo rastie a stojí za pozornosť“ → „Žiadanému produktu dochádzajú zásoby“ → „Dôležitý produkt je nedostupný a stále naň chodí platený traffic“ → „Produkt je znovu skladom, ale stále je skrytý“.
+7. **Čo to znamená pre váš e-shop:** rovnaké pravidlá bežia nad vaším Shoptetom každú noc. Výzva: ukážka rána s Shop Pilotom (20 minút).
+
+---
+
+## 7. Pozvánka na ukážku (po súhlase)
 
 > Ďakujem. Ukážka trvá 20 až 30 minút a beží na reálnych číslach môjho e-shopu (niektoré hodnoty sú upravené), takže nič nepripravujete ani nezdieľate:
 > - 5 minút o vašom e-shope (aké tri rozhodnutia dnes robíte v Exceli alebo cez päť nástrojov),
@@ -177,7 +230,7 @@ Bez odkazu v texte. Produkt spomenúť až v komentároch alebo v správe.
 
 ---
 
-## 7. Ponuka pilotu (e-mail do hodiny po ukážke)
+## 8. Ponuka pilotu (e-mail do hodiny po ukážke)
 
 **Predmet:** Ráno s Shop Pilotom na vašich dátach: ďalší krok
 
@@ -199,7 +252,7 @@ zakladateľ Shop Pilot, majiteľ Kifra.sk
 
 ---
 
-## 8. Partnerský pitch (3 vety)
+## 9. Partnerský pitch (3 vety)
 
 **Shoptet (platforma):**
 > Vaši používatelia majú štatistiky, ale nie zisk po všetkých nákladoch ani denné priority. Shop Pilot sa pripojí na Shoptet, reklamné účty a náklady a ráno dá majiteľovi zoznam akcií s dopadom v eurách; postavil som ho pre vlastný e-shop na Shoptete. Rád by som ho zaradil medzi doplnky a prebral partnerský program.
@@ -212,7 +265,7 @@ zakladateľ Shop Pilot, majiteľ Kifra.sk
 
 ---
 
-## 9. Otvárače na konferenciu (jedna veta)
+## 10. Otvárače na konferenciu (jedna veta)
 
 - „Viete, koľko ste zarobili včera? Nie tržby, zisk.“
 - „Na čom beží váš e-shop?“ (kvalifikácia: Shoptet)
@@ -222,13 +275,14 @@ zakladateľ Shop Pilot, majiteľ Kifra.sk
 
 ---
 
-## 10. Krátke odpovede na námietky (chat, správa)
+## 11. Krátke odpovede na námietky (chat, správa)
 
 - **„Mám GA4/Shoptet.“** „Tie ukážu, čo sa stalo. Shop Pilot povie, čo s tým urobiť dnes, a počíta aj sklad a náklady.“
 - **„Mám agentúru.“** „Agentúra rieši ROAS, vy potrebujete zisk. Shop Pilot je vaša kontrola a agentúre dá priority.“
 - **„Nemám čas.“** „5 minút ráno, nič nevypĺňate. Berie čas, nepridáva.“
 - **„AI si vymýšľa.“** „Nie je to AI. Pravidlá s výpočtom pri každej akcii, všetko si overíte.“
 - **„Prístupy k dátam?“** „V ukážke nič nezdieľate. V pilote read-only, kedykoľvek zrušíte; vaše dáta bežia vo vlastnom oddelenom prostredí na Google Cloud.“
+- **„A údaje mojich zákazníkov?“** „Shop Pilot neukladá kontaktné údaje vašich zákazníkov a nikoho neoslovuje. Povie, koho sa oplatí osloviť; oslovenie robíte vy zo Shoptetu.“
 - **„Koľko to stojí?“** „100 € mesačne, bez viazanosti. Jedna zle nastavená kampaň ma stála asi 1 000 €.“
 - **„Ste noví.“** „Prvá referencia je môj e-shop. Prvých desať zákazníkov má cenu natrvalo a ak za mesiac nenájdeme akciu za viac ako 100 €, vrátim peniaze.“
 - **„Nie som na Shoptete.“** „Zatiaľ len Shoptet. Nechajte mi platformu a e-mail, poradie ďalších určuje dopyt.“

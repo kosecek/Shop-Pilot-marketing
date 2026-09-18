@@ -1,8 +1,12 @@
-# Obsahová knižnica: situácie expertného systému ako príbehy (v1)
+# Obsahová knižnica: situácie expertného systému ako príbehy (v1.1)
 
 Zdroj: *Shop Pilot — Expert System Semantic Contract v0.51 & L1 Situation Matrix v0.34* (interný dokument, 24 aktívnych situácií MVP). Tento dokument je marketingová derivácia: každá situácia = jeden príbeh pre príspevok, e-mail, slide v ukážke a neskôr reklamu.
 
-**Dôležité obmedzenie.** Zmluva je návrh (fáza B), nie implementačná špecifikácia. V produkte dnes bežia pôvodné pravidlá (R2, R3, R4, R5, R-Backorder, DR1 až DR10, DR12). Mapovanie starých pravidiel na nové situácie je v prílohe 9 zmluvy označené ako neoverené. Preto má každá karta pole **Dnes v produkte** a platí pravidlo: **publikujeme len príbehy o tom, čo produkt dnes reálne robí.** Ostatné karty sú pripravené a čakajú na nasadenie. Toto je priamo hodnota „spoľahlivosť“ prenesená do marketingu.
+**Stav implementácie (18. 9. 2026).** Podľa *V2 Inventory/DR4 Vertical Slice Plan v0.4* sa práve dokončuje prvý slice nového systému (V2): reťazec skladových situácií (rastúci dopyt → dochádzajú zásoby → nedostupný produkt), platená návštevnosť na nedostupný produkt, ich spojená karta (bývalé DR4) a pripomienka zviditeľnenia po naskladnení. Tento slice nahrádza pôvodné pravidlá R2, R3, R4 a DR4 a musí prejsť prehrávkou incidentu PMAG/VEL (24. až 30. 6. 2026), inak nejde do produkcie. Zvyšok produktu beží na pôvodných pravidlách V1 (DR1, DR2, DR3, DR5, DR6, DR7, DR8, DR10, DR12); ich mapovanie na nové situácie je v prílohe 9 zmluvy označené ako neoverené.
+
+Preto má každá karta pole **Dnes v produkte** s tromi hodnotami: **V2 slice** (prvý nasadený kus nového systému, publikovať po nasadení do produkcie), **V1** (pôvodné pravidlo, publikovať s reálnym pozorovaním z histórie odporúčaní), **návrh** (čaká na ďalšie fázy, nepublikovať ako funkciu). Platí: **publikujeme len príbehy o tom, čo produkt reálne robí.** Toto je hodnota „spoľahlivosť“ prenesená do marketingu.
+
+**Názvy situácií** sú v zmluve kanonické a budú pred zobrazením zákazníkom lokalizované (rozhodnutie zakladateľa). Pri štyroch situáciách zo slice-u už existujú texty kariet pre majiteľa a tie používame prednostne; pri ostatných používame kanonický názov a po lokalizácii karty aktualizujeme.
 
 ---
 
@@ -38,7 +42,7 @@ Prázdne bunky sú zámerné (zmluva: „vymýšľať umelé situácie kvôli sy
 Každá karta má rovnakú štruktúru:
 
 - **Otázka majiteľa** a oblasť.
-- **Dnes v produkte:** áno (ktoré pôvodné pravidlo) / čiastočne / návrh. Podľa prílohy 9 zmluvy, **neoverené, potvrdiť**.
+- **Dnes v produkte:** V2 slice / V1 (ktoré pôvodné pravidlo; mapovanie podľa prílohy 9 zmluvy, neoverené) / návrh.
 - **Hook:** prvá veta príspevku alebo predmet e-mailu.
 - **Príbeh:** situácia → v číslach → čo to stojí → čo urobiť dnes → ako to Shop Pilot stráži. Hranaté zátvorky sú miesta na reálne čísla z Kifra.sk alebo pilotov; bez reálneho čísla sa príbeh nepublikuje.
 - **Pozor:** hranica zo zmluvy, ktorú text nesmie prekročiť (čo systém netvrdí).
@@ -60,7 +64,7 @@ Pravidlá formulácie:
 
 #### K1. Kampaň míňa rozpočet bez primeraného zisku
 - **Otázka:** Kde strácam? Reklama, jedna kampaň.
-- **Dnes v produkte:** áno (DR1 Neefektívna kampaň, DR5 Zhoršujúca sa kampaň).
+- **Dnes v produkte:** V1 (DR1 Neefektívna kampaň, DR5 Zhoršujúca sa kampaň); reálny prípad z Kifra.sk existuje.
 - **Hook:** „Moja najlepšia kampaň podľa ROAS bola stratová. Asi 1 000 €.“
 - **Príbeh:** Kampaň má vysoký ROAS, report vyzerá skvele. Po odpočítaní tovaru, dopravy, poplatkov za platbu a podielu fixných nákladov prináša každá objednávka stratu. V číslach: [ROAS X, marža po nákladoch Y %, break-even ROAS Z]. Čo to stojí: [N € za deň]. Čo urobiť dnes: znížiť rozpočet, pozastaviť, alebo upraviť bidding, cielenie a kreatívu. Ako to Shop Pilot stráži: každú noc prepočíta zisk kampane po všetkých nákladoch, nie ROAS.
 - **Pozor:** nehovoriť „nízky ROAS“; ide o zisk po nákladoch. Nesľubovať, že systém vie, ktorý produkt kampaň predáva (mapovanie kampaň → produkt nie je k dispozícii).
@@ -75,16 +79,17 @@ Pravidlá formulácie:
 - **Kanál a priorita:** LinkedIn. Priorita 3 (po nasadení).
 
 #### K3. Platený traffic smeruje na nepredajný produkt
+- **Text karty v produkte (slice):** „Produkt je nedostupný a stále naň chodí platený traffic.“ V spojení s U2 vzniká spojená karta „Dôležitý produkt je nedostupný a stále naň chodí platený traffic“ s prvou akciou: „Dočasne nastav produkt/variant na hidden, aby sa odstránil z reklamného katalógu alebo feedu. Po naskladnení ho znovu zviditeľni. Skontroluj, či máš dostupnú alternatívu alebo skladové riešenie.“
 - **Otázka:** Kde strácam? Reklama, produktová stránka.
-- **Dnes v produkte:** áno (DR4 Reklama trpí kvôli supply, v spojení s vypredaným produktom R2).
+- **Dnes v produkte:** V2 slice (nahrádza DR4 Reklama trpí kvôli supply); publikovať po nasadení do produkcie.
 - **Hook:** „Platíte za návštevy produktu, ktorý sa nedá kúpiť.“
-- **Príbeh:** Produkt je vypredaný alebo nedostupný a platená návštevnosť naň ďalej chodí. V číslach: [platené návštevy stránky za deň, odhad minutých peňazí]. Čo to stojí: [€ za deň]. Čo urobiť dnes: dočasne skryť produkt alebo variant, aby vypadol z reklamného katalógu a feedu; po naskladnení ho znovu zviditeľniť. Nerušiť celú kampaň. Ako to Shop Pilot stráži: z GA4 vidí platenú návštevnosť na stránke produktu, ktorý sa nedá kúpiť.
-- **Pozor:** netvrdiť „kampaň X beží na produkt Y“. Systém vidí platenú návštevnosť na stránke produktu, nie mapovanie kampane na produkt. Presnosť sumy závisí od kvality spojenia nákladov; hovoriť „odhad“.
-- **Kanál a priorita:** skupiny, cold e-mail (otvárač z Meta Ad Library je ručná kontrola zakladateľa, nie funkcia produktu). Priorita 1.
+- **Príbeh:** Produkt je vypredaný alebo nedostupný a platená návštevnosť naň ďalej chodí. V číslach: [platené návštevy stránky za deň, odhad minutých peňazí]. Čo to stojí: [ušlá marža z nedostupnosti € za deň + platená návštevnosť ako odhad plytvania]. Čo urobiť dnes: dočasne skryť produkt alebo variant, aby vypadol z reklamného katalógu a feedu; po naskladnení ho znovu zviditeľniť; skontrolovať alternatívu. Nerušiť celú kampaň. Ako to Shop Pilot stráži: z GA4 vidí platenú návštevnosť na stránke produktu, ktorý sa nedá kúpiť, spojí ju s vypredaným produktom do jednej karty a po naskladnení pripomenie zviditeľnenie (D1).
+- **Pozor:** netvrdiť „kampaň X beží na produkt Y“. Systém vidí platenú návštevnosť na stránke produktu, nie mapovanie kampane na produkt. Straty z nedostupnosti a z platenej návštevnosti sa nesčítavajú naslepo; plytvanie reklamou je odhad, ak sa náklady nedajú spoľahlivo priradiť.
+- **Kanál a priorita:** skupiny, cold e-mail (otvárač z Meta Ad Library je ručná kontrola zakladateľa, nie funkcia produktu), ukážka. Priorita 1. Reálne čísla: z prehrávky PMAG/VEL, ak fixture obsahuje platenú návštevnosť.
 
 #### K4. Produkt viaže cash a predáva sa príliš pomaly
 - **Otázka:** Kde strácam? Sklad, jeden produkt.
-- **Dnes v produkte:** návrh (overiť, či niektoré pôvodné pravidlo pokrýva pomalý sklad).
+- **Dnes v produkte:** návrh (R5 Sortiment vypadáva je iná téma; pomalý sklad nemá živé pravidlo).
 - **Hook:** „Koľko peňazí vám leží na sklade v produktoch, ktoré sa nehýbu?“
 - **Príbeh:** Zásoba produktu vydrží pri aktuálnej rýchlosti predaja [X mesiacov]. V číslach: [hodnota zásoby, predaj za deň]. Čo to stojí: [viazaný kapitál × náklad kapitálu alebo riziko zľavy = € za deň]. Čo urobiť dnes: vypredať, znížiť cenu, prestať objednávať, upraviť merchandising; ak už produkt nemá byť v predaji, skryť ho. Ako to Shop Pilot stráži: rýchlosť predaja proti zásobe pre každý produkt, relatívne k veľkosti e-shopu.
 - **Pozor:** dopad je cena viazaného kapitálu za deň, nie hodnota zásob. Nehovoriť o „starom produkte“ (vek v katalógu nie je vek zásoby) ani o sezónnosti.
@@ -100,7 +105,7 @@ Pravidlá formulácie:
 
 #### K6. Zľavy alebo kupóny zvyšujú obrat, ale ničia maržu
 - **Otázka:** Kde strácam? Ceny, konkrétna promo akcia.
-- **Dnes v produkte:** áno (DR10 Erózia cez zľavy).
+- **Dnes v produkte:** V1 (DR10 Erózia cez zľavy).
 - **Hook:** „Rekordný mesiac v tržbách. Najhorší v zisku. Kupóny.“
 - **Príbeh:** Promo zvyšuje počet objednávok, ale realizovaná marža po zľave padá. V číslach: [podiel objednávok so zľavou, marža po zľave vs. bez]. Čo to stojí: [€ za deň]. Čo urobiť dnes: obmedziť zľavy, upraviť promo pravidlá, zmeniť politiku zliav. Ako to Shop Pilot stráži: sleduje realizovanú maržu po zľave v konkrétnej promo akcii.
 - **Pozor:** samotná existencia zliav nestačí; musí ísť o materiálnu stratu marže. Nehovoriť „zľavy sú zlé“.
@@ -134,31 +139,33 @@ Pravidlá formulácie:
 
 #### U1. Z dôležitého zdroja návštevnosti chodí menej ľudí
 - **Otázka:** Kde uniká hodnota? Reklama a návštevnosť, jeden zdroj.
-- **Dnes v produkte:** áno (DR2 Pokles tržieb kvôli návštevnosti, DR7 Zhoršenie kanála).
+- **Dnes v produkte:** V1 (DR2 Pokles tržieb kvôli návštevnosti, DR7 Zhoršenie kanála).
 - **Hook:** „Tržby klesli. Skôr než niečo meníte, zistite, ktorý zdroj ľudí vypadol.“
 - **Príbeh:** Historicky hodnotný zdroj (organické vyhľadávanie, konkrétna kampaň, porovnávač) privádza menej ľudí než v porovnateľné dni. V číslach: [očakávané vs. skutočné návštevy, hodnota na návštevu]. Čo to stojí: [€ za deň]. Čo urobiť dnes: overiť meranie, potom kampane, organiku, feed, indexáciu, presmerovania a obsah. Ako to Shop Pilot stráži: porovnáva s rovnakými dňami v týždni a overí, či objednávky sedia s návštevnosťou; ak nie, hlási problém merania, nie biznisu.
 - **Pozor:** nie „klesli sessions“; iba historicky hodnotné zdroje.
 - **Kanál a priorita:** skupiny, LinkedIn. Priorita 1.
 
 #### U2. Dôležitý produkt je nedostupný pri existujúcom dopyte
+- **Text karty v produkte (slice):** „Dôležitý produkt je nedostupný pri existujúcom dopyte.“ Stav „hneď“ (kríza), ak prejde prahom dôležitosti.
 - **Otázka:** Kde uniká hodnota? Sklad, jeden produkt.
-- **Dnes v produkte:** áno (R2 Vypredaný TOP produkt).
+- **Dnes v produkte:** V2 slice (nahrádza R2 Vypredaný TOP produkt); publikovať po nasadení. Reálny prípad: PMAG/VEL, jún 2026.
 - **Hook:** „Najhorší deň e-shopu: ľudia chcú kúpiť a nemôžu.“
 - **Príbeh:** Dôležitý produkt je vypredaný, dopyt trvá (ľudia chodia na jeho stránku). V číslach: [predaje za deň pred vypredaním, marža]. Čo to stojí: [ušlá marža € za deň]. Čo urobiť dnes: doskladniť, ponúknuť alternatívu, upraviť dostupnosť. Ako to Shop Pilot stráži: keď dôležitý produkt s dopytom nie je dostupný, ide na vrch zoznamu bez ohľadu na iné čísla; dôležitosť meria podielom na tržbách.
-- **Pozor:** nie pre produkty, ktoré majiteľ zámerne stiahol (skryté). Systém nevidí otvorené objednávky u dodávateľa, povedať to úprimne.
-- **Kanál a priorita:** skupiny, ukážka (spolu s K3 ako spojená karta). Priorita 1.
+- **Pozor:** nie pre produkty, ktoré majiteľ zámerne stiahol (skryté). Systém nevidí otvorené objednávky u dodávateľa, povedať to úprimne. Ak import dát zlyhá, situácia sa nezavrie sama (S9).
+- **Kanál a priorita:** skupiny, LinkedIn (príbeh PMAG/VEL), ukážka (spolu s K3 ako spojená karta). Priorita 1.
 
 #### U3. Hot seller má nízke skladové pokrytie a hrozí preventívny únik predaja
+- **Text karty v produkte (slice):** „Žiadanému produktu dochádzajú zásoby.“ Stavy „tento týždeň“ alebo „dnes“, nikdy „hneď“ (to patrí nedostupnosti).
 - **Otázka:** Kde uniká hodnota? Sklad, jeden produkt.
-- **Dnes v produkte:** áno (R3 Hrozí vypredanie, časť R4).
+- **Dnes v produkte:** V2 slice (nahrádza R3 Hrozí vypredanie); publikovať po nasadení.
 - **Hook:** „Bestseller vám dôjde o 9 dní. Dodávateľ dodáva za 14.“
 - **Príbeh:** Pri aktuálnej rýchlosti predaja vydrží zásoba kratšie než dodacia lehota. V číslach: [zásoba, predaj za deň, dodacia lehota, rezerva]. Čo to stojí: [ušlá marža za dni výpadku]. Čo urobiť dnes: objednať skôr, zrýchliť dodávku, pripraviť náhrady, obmedziť promo. Ako to Shop Pilot stráži: porovnáva pokrytie zásoby s dodacou lehotou dodávateľa a vašou rezervou; hlási „dnes“, kým sa dá objednať včas.
-- **Pozor:** systém nevidí otvorené objednávky u dodávateľa; ak ste už objednali, odporúčanie zavriete jedným klikom (po nasadení evidencie zámerov majiteľa).
+- **Pozor:** systém nevidí otvorené objednávky u dodávateľa, preto sa karta priamo pýta, či je doplnenie už na ceste. Toto je príbeh o poctivosti: nástroj priznáva, čo nevidí, a spýta sa.
 - **Kanál a priorita:** skupiny, cold e-mail. Priorita 1.
 
 #### U4. Dôležitá produktová alebo landing stránka má návštevnosť, ale nepredáva
 - **Otázka:** Kde uniká hodnota? Web, jedna stránka.
-- **Dnes v produkte:** čiastočne (DR3 Pokles tržieb kvôli konverzii, overiť).
+- **Dnes v produkte:** V1 čiastočne (DR3 Pokles tržieb kvôli konverzii, overiť).
 - **Hook:** „Stránka, ktorá predávala, prestala. Ľudia na ňu chodia ďalej.“
 - **Príbeh:** Dôležitá stránka mala zdravý výkon, návštevnosť zostala, predaj padol. V číslach: [hodnota na návštevu predtým a teraz]. Čo to stojí: [€ za deň]. Čo urobiť dnes: skontrolovať cenu, popis, fotky, dostupnosť, dôveryhodnosť, výzvu k akcii, varianty a dopravu. Ako to Shop Pilot stráži: sleduje stránky s vlastnou zdravou históriou a vylúči zmenu zloženia návštevnosti, sklad, checkout a chyby merania.
 - **Pozor:** nie chronicky slabé stránky (to je príležitosť, nie únik). Nehovoriť „konverzia stránky klesla“.
@@ -166,7 +173,7 @@ Pravidlá formulácie:
 
 #### U5. Košík alebo checkout prepúšťa zákazníkov, ktorí už chceli kúpiť
 - **Otázka:** Kde uniká hodnota? Web, nákupný proces.
-- **Dnes v produkte:** áno (DR6 Problémy vo funneli).
+- **Dnes v produkte:** V1 (DR6 Problémy vo funneli).
 - **Hook:** „Zákazník mal tovar v košíku a odišiel. Kde presne?“
 - **Príbeh:** Ľudia dôjdu do košíka a checkoutu, dokončených objednávok ubudlo. V číslach: [košík → checkout → objednávka vs. porovnateľné dni]. Čo to stojí: [ušlá marža € za deň]. Čo urobiť dnes: skontrolovať dopravu, platby, chyby, mobilný checkout, kupóny a technické zmeny. Ako to Shop Pilot stráži: porovnáva kroky košíka a checkoutu s objednávkami v Shoptete a s rovnakými dňami v týždni; ak čísla nesedia, hlási meranie.
 - **Pozor:** zlyhanie platobnej brány po odoslaní objednávky patrí do „objednávky blokuje platba“ (v Shoptete vzniká objednávka pred platbou). Nie generický pokles konverzie.
@@ -174,7 +181,7 @@ Pravidlá formulácie:
 
 #### U6. Dôležitá skupina návštevníkov prestala nakupovať
 - **Otázka:** Kde uniká hodnota? Web, skupina návštevníkov.
-- **Dnes v produkte:** áno (DR3, DR8 Mobile UX problém).
+- **Dnes v produkte:** V1 (DR3, DR8 Mobile UX problém).
 - **Hook:** „Na mobile ste prestali predávať. Na počítači nie.“
 - **Príbeh:** Konkrétna skupina (zariadenie, prehliadač, zdroj) chodí ďalej, ale nekupuje. V číslach: [hodnota na návštevu skupiny predtým a teraz]. Čo to stojí: [€ za deň]. Čo urobiť dnes: skontrolovať skupinu: zariadenie, prehliadač, zdroj a vstupné stránky, produktové stránky, dopravu, platby, UX a technické zmeny. Ako to Shop Pilot stráži: overí, že skupina stále chodí, že objednávky v Shoptete sedia a že nejde len o zmenu zloženia skupiny.
 - **Pozor:** malé skupiny najviac „tento týždeň“, nikdy „hneď“. Jedna stránka nie je skupina (to je U4).
@@ -214,7 +221,7 @@ Pravidlá formulácie:
 
 #### U11. Objednávky blokuje platba alebo doručenie
 - **Otázka:** Kde uniká hodnota? Prevádzka, blokované objednávky.
-- **Dnes v produkte:** čiastočne (R-Backorder, overiť).
+- **Dnes v produkte:** V1 čiastočne (R-Backorder, overiť).
 - **Hook:** „Objednávka existuje, peniaze nie. Napíšte im dnes.“
 - **Príbeh:** Objednávky uviazli na nezaplatenej online platbe, zlyhanej platbe alebo doručení. V číslach: [počet, hodnota, vek]. Čo to stojí: [marža v riziku € za deň]. Čo urobiť dnes: poslať platobnú pripomienku alebo nový odkaz, kontaktovať zákazníka, ponúknuť inú platbu či dopravu, opraviť problémovú metódu. Ako to Shop Pilot stráži: rozlišuje dobierku (nie je blokovaná) a online platbu po ochrannej lehote.
 - **Pozor:** opustený košík pred odoslaním objednávky patrí do U5.
@@ -231,11 +238,12 @@ Pravidlá formulácie:
 - **Kanál a priorita:** LinkedIn. Priorita 2 (dôležité pre rovnováhu: nie sme alarm).
 
 #### P2. Emerging bestseller má rastúci dopyt a zaslúži si podporu
+- **Text karty v produkte (slice):** „Produkt rýchlo rastie a stojí za pozornosť.“ Stavy „sledovať“ alebo „tento týždeň“; či sa zobrazuje v rannom zozname alebo len v sekcii príležitostí, je v slice-e otvorené (SLICE-OPEN-05).
 - **Otázka:** Kde pritlačiť? Sklad, jeden produkt.
-- **Dnes v produkte:** áno (R4 Rastúci dopyt).
+- **Dnes v produkte:** V2 slice (nahrádza R4 Rastúci dopyt); publikovať po nasadení.
 - **Hook:** „Produkt, ktorého dopyt rastie, kým si to všimne konkurencia.“
 - **Príbeh:** Predaje aj záujem o stránku rastú, produkt je dostupný. V číslach: [rast predajov týždeň k týždňu, marža]. Čo to stojí: [nevyužitý potenciál, konzervatívne]. Čo urobiť dnes: doskladniť, zvýrazniť, zaradiť do kampane, newslettera alebo na homepage. Ako to Shop Pilot stráži: rast dopytu plus dostupnosť; keď pokrytie klesne, prepne na „objednať skôr“ a pri vypredaní na „nedostupný“. Jeden produkt, tri stavy, tri rôzne akcie.
-- **Pozor:** ide o konkrétny produkt, nie kategóriu.
+- **Pozor:** ide o konkrétny produkt, nie kategóriu. Nesľubovať „každé ráno príležitosť v top zozname“, kým nie je rozhodnuté, kde sa karta zobrazuje.
 - **Kanál a priorita:** skupiny, LinkedIn. Priorita 1 (prvý príbeh o príležitosti).
 
 #### P3. Dôležitá stránka má návštevnosť, ktorú vieš lepšie premeniť na predaj
@@ -254,6 +262,17 @@ Pravidlá formulácie:
 - **Pozor:** Shop Pilot neukladá kontakty a nikoho neoslovuje; export obsahuje len obmedzené identifikátory na párovanie.
 - **Kanál a priorita:** LinkedIn. Priorita 3.
 
+### Doplnková karta (follow-up, nie situácia)
+
+#### D1. Produkt je znovu skladom, ale stále je skrytý
+- **Text karty v produkte (slice):** „Produkt je znovu skladom, ale stále je skrytý. Skontroluj, či ho nechceš znovu zviditeľniť.“
+- **Otázka:** Kde uniká hodnota? Sklad a viditeľnosť produktu.
+- **Dnes v produkte:** V2 slice (Task 010 ju môže z MVP odložiť; overiť pred publikovaním).
+- **Hook:** „Skryli ste vypredaný produkt, aby nežral reklamu. Kto vám povie, že je zas skladom?“
+- **Príbeh:** Produkt bol skrytý (kvôli reklame, alebo len tak), tovar prišiel, stav skladu je niekoľko dní po sebe kladný, a produkt je stále neviditeľný. Nikto nepredáva, čo nie je vidieť. Čo urobiť dnes: skontrolovať a zviditeľniť. Ako to Shop Pilot stráži: nezávisle od toho, či skrytie odporučil on alebo ste ho urobili sami; čaká, kým je stav skladu stabilne kladný (najmenej 3 dni), aby nehlásil jednodňové výkyvy z vrátených zásielok alebo korekcií; rešpektuje zámerne stiahnuté produkty.
+- **Pozor:** nie je to situácia ani alarm, je to pripomienka. Nehlási hneď v prvý deň kladného stavu.
+- **Kanál a priorita:** skupiny používateľov Shoptetu (malá, konkrétna, každodenná vec). Priorita 1 po nasadení.
+
 ---
 
 ## 4. Prierezové príbehy (princípy systému)
@@ -262,16 +281,26 @@ Tieto príbehy nie sú o jednej situácii, ale o tom, ako systém uvažuje. Sú 
 
 | # | Hook | Jadro príbehu | Dnes v produkte |
 |---|---|---|---|
-| S1 | „Nie najväčšie číslo, ale najbližší termín.“ | Shop Pilot netriedi podľa výšky sumy, ale podľa termínu rozhodnutia: hneď, dnes, tento týždeň, sledovať. Suma rozhoduje až v rámci rovnakého termínu. Inak by každý malý únik navždy predbehol každú veľkú príležitosť a z poradcu by bol alarm. | návrh (fáza D) |
-| S2 | „5 € denne môže byť kríza.“ | Prahy sú relatívne k veľkosti e-shopu, nie absolútne. Pre e-shop so 150 tisíc je 5 € denne iné číslo než pre e-shop s 3 miliónmi. Preto sedí aj na malé e-shopy. | návrh |
-| S3 | „Skôr než radí, overí, či sa dá dátam veriť.“ | Ak GA4 hlási pád návštevnosti, ale objednávky v Shoptete bežia normálne, nie je to biznisový problém, ale problém merania. Shop Pilot povie „skontrolujte meranie“, nie „padli vám tržby“. | áno (DR12 Anomálie v dátach), rozšírenie v návrhu |
-| S4 | „Reklama nefunguje? Pozrite do skladu.“ | Vypredaný produkt a platená návštevnosť naň sú dve situácie, ktoré systém spojí do jednej karty: nezastavuj kampaň naslepo, problém je sklad. Toto dashboard reklamy nevidí, lebo nevidí sklad. | áno (DR4) |
-| S5 | „Jeden produkt, tri stavy, tri akcie.“ | Rastúci dopyt → nízke pokrytie → vypredané. Každý stav má inú akciu a iný termín. Shop Pilot ich nespája do jedného „pozor na produkt X“. | áno (R4, R3, R2); explicitné prechody v návrhu |
-| S6 | „Nepošle vašim zákazníkom ani jeden e-mail.“ | Shop Pilot neukladá kontaktné údaje zákazníkov a nikoho neoslovuje. Povie, koho sa oplatí osloviť, oslovenie robíte vy zo Shoptetu. Hranica navrhnutá zámerne. | rozhodnutie o dátach (overiť stav) |
+| S1 | „Nie najväčšie číslo, ale najbližší termín.“ | Shop Pilot netriedi podľa výšky sumy, ale podľa termínu rozhodnutia: hneď, dnes, tento týždeň, sledovať. Suma rozhoduje až v rámci rovnakého termínu. Inak by každý malý únik navždy predbehol každú veľkú príležitosť a z poradcu by bol alarm. | V2 slice (pre štyri situácie zo slice-u); zvyšok návrh |
+| S2 | „5 € denne môže byť kríza.“ | Prahy sú relatívne k veľkosti e-shopu, nie absolútne. Pre e-shop so 150 tisíc je 5 € denne iné číslo než pre e-shop s 3 miliónmi. Produkt s veľkým podielom na tržbách prejde prahom aj vtedy, keď je denný odhad opatrný. | V2 slice |
+| S3 | „Skôr než radí, overí, či sa dá dátam veriť.“ | Ak GA4 hlási pád návštevnosti, ale objednávky v Shoptete bežia normálne, nie je to biznisový problém, ale problém merania. Shop Pilot povie „skontrolujte meranie“, nie „padli vám tržby“. | V1 (DR12 Anomálie v dátach); súlad návštevnosti s objednávkami je návrh |
+| S4 | „Reklama nefunguje? Pozrite do skladu.“ | Vypredaný produkt a platená návštevnosť naň sú dve situácie, ktoré systém spojí do jednej karty: nezastavuj kampaň naslepo, problém je sklad. Toto dashboard reklamy nevidí, lebo nevidí sklad. | V2 slice (spojená karta); predtým DR4 |
+| S5 | „Jeden produkt, tri stavy, tri akcie.“ | Rastúci dopyt → dochádzajú zásoby → nedostupný. Každý prechod je udalosť, ktorá zruší predchádzajúce „už som to videl“; chronická situácia nikdy neutopí novú krízu. Reálny príbeh: PMAG/VEL, jún 2026 (schválený zakladateľom, viď 4.1). | V2 slice |
+| S6 | „Nepošle vašim zákazníkom ani jeden e-mail.“ | Shop Pilot neukladá kontaktné údaje zákazníkov a nikoho neoslovuje. Povie, koho sa oplatí osloviť, oslovenie robíte vy zo Shoptetu. Hranica navrhnutá zámerne. | áno, platí dnes |
 | S7 | „Každá akcia má výpočet. Žiadne odhady od AI.“ | Deterministické pravidlá: pri každej akcii vidíte, z akých čísel vznikla. Keď nie sú dáta, systém mlčí, namiesto toho, aby si vymyslel odpoveď. | áno |
-| S8 | „Keď sa pokazia tri veci naraz, nespočíta stratu trikrát.“ | Pokles návštevnosti a pokles konverzie na tej istej stránke sú jedna strata, nie dve. Systém dopad rozdelí, nie sčíta. | návrh |
+| S8 | „Keď sa pokazia tri veci naraz, nespočíta stratu trikrát.“ | Vypredaný produkt a reklama naň sú jedna karta s jedným dopadom, nie dve straty. Systém dopad rozdelí, nie sčíta. | V2 slice (spojená karta); zvyšok návrh |
+| S9 | „Ak dnes zlyhá import dát, netvrdí, že problém zmizol.“ | Situácia sa zavrie len vtedy, keď detektor bežal, dáta sú čerstvé a výslovne hlási koniec. Chýbajúce dáta nikdy neznamenajú „vyriešené“. Dashboardy toto nerozlišujú: prázdny graf vyzerá ako pokoj. | V2 slice |
+| S10 | „Incident sa stal testom.“ | Dáta z 24. až 30. júna 2026 sú trvalý regresný test: každá nová verzia systému ich musí prehrať správne (otvoriť rast, prepnúť na dochádzajúce zásoby, vyhlásiť krízu pri nedostupnosti, spojiť s reklamou), inak nejde do produkcie. | V2 slice |
 
-Voliteľný príbeh zo zákulisia (rozhodnutie zakladateľa): incident PMAG/VEL z júna 2026, keď na Kifra.sk vypredal top produkt a pôvodný systém to nehlásil, a ako sa preto prerobil celý expertný systém (S1, S5). Je to riskantné, lebo priznáva chybu, ale pre hodnotu „spoľahlivosť“ je to najsilnejší možný dôkaz, že sa systém berie vážne. Publikovať až po nasadení opravy.
+### 4.1 Štartovací príbeh: PMAG/VEL (schválený, reálny)
+
+Incident z júna 2026: top produkt Kifra.sk s materiálnym podielom na tržbách sa 26. júna vypredal a pôvodný systém to nehlásil (dopady v eurách s rôznymi časovými oknami, chronické potláčanie, dôležitý produkt podhodnotený denným odhadom). Zakladateľ schválil použitie príbehu. Odporúčané použitie:
+
+1. **LinkedIn, dva diely** (šablóny v `02-sablony-textov.md`, kap. 6): diel 1 „čo sa stalo a prečo systém mlčal“, diel 2 „čo sme zmenili: termín pred sumou, tri stavy, dôležitosť podľa podielu na tržbách, incident ako trvalý test“.
+2. **Prípadová štúdia na web** po nasadení slice-u: skutočné karty z prehrávky (shadow výstup pre okno 24. až 30. 6.) ako obrázky: rast → dochádzajú zásoby → nedostupný → spojená karta s reklamou.
+3. **Ukážka:** tie isté karty ako „toto je skutočné ráno z 27. júna“. Silnejšie než akékoľvek demo dáta.
+
+Poradie je dôležité: diel 1 sa smie publikovať hneď (je pravdivý dnes), diel 2 a prípadová štúdia až po nasadení slice-u do produkcie, aby text netvrdil, že oprava beží, kým beží v tieňovom režime.
 
 ---
 
@@ -289,36 +318,47 @@ Zaparkované situácie sú obsah. Chatbot odpovie na všetko; poradca povie, na 
 | „Ste príliš závislí od jedného kanála.“ | To je riziko, nie denná akcia. | Patrí do prehľadu zdravia e-shopu, nie do ranného briefingu. |
 | „Konkurencia je lacnejšia.“ | Bez dát o cenách konkurencie. | Mimo rozsahu, kým nebudú dáta o cenách trhu. |
 | „Poslali sme vašim zákazníkom pripomienku.“ | Zámerne: Shop Pilot neukladá kontakty a nekomunikuje so zákazníkmi. | Povie, koho osloviť; oslovenie robíte vy. |
+| „Kategória X vám predáva zle.“ | Kategórie v e-shopoch nie sú spoľahlivé (každý ich má inak), preto sa nepoužívajú na porovnávanie ani prahy. | Hodnotí konkrétne produkty a stránky. |
+| „Problém zmizol.“ (keď chýbajú dáta) | Chýbajúci import nie je vyriešený problém. | Situácia ostáva otvorená, kým detektor výslovne nehlási koniec. |
 
 ---
 
 ## 6. Plán publikovania (12 týždňov, 2 príspevky týždenne)
 
-Pravidlo: do potvrdenia zoznamu živých pravidiel sa publikujú len karty označené „áno“. Karty „návrh“ v pláne nahradiť prierezovými príbehmi alebo sériou „nepovie“.
+Východiská: reálne číslo existuje zatiaľ len pre K1 (približne 1 000 €) a reálny incident pre S5/S10 (PMAG/VEL). Ďalšie čísla prídu z dvoch zdrojov: (a) prehrávka a tieňový výstup slice-u V2 pre okno 24. až 30. 6. dá skutočné karty a dopady pre P2, U3, U2, K3 a D1; (b) história odporúčaní V1 v Looker Studio dá jedno reálne pozorovanie pre U5, U6, U1 a K6. Kým čísla nie sú, publikujú sa príbehy, ktoré ich nepotrebujú: princípy (S3, S7, S9), séria „nepovie“ a diel 1 PMAG/VEL.
 
-| Týždeň | Príspevok A | Príspevok B |
-|---|---|---|
-| 1 | K1 Kampaň s vysokým ROAS, stratová (1 000 €) | S7 Každá akcia má výpočet |
-| 2 | S4 + K3 + U2 Reklama nefunguje? Pozrite do skladu | U3 Bestseller dôjde o 9 dní |
-| 3 | P2 Rastúci dopyt: kde pritlačiť | S3 Skôr než radí, overí meranie |
-| 4 | U5 Košík prepúšťa zákazníkov | Nepovie: „Zvýšte cenu“ |
-| 5 | U1 Z dôležitého zdroja chodí menej ľudí | U6 Na mobile ste prestali predávať |
-| 6 | K6 Kupóny ničia maržu | S1 Nie najväčšie číslo, ale najbližší termín |
-| 7 | S5 Jeden produkt, tri stavy (prípadne PMAG/VEL) | Nepovie: „Balíček A + B“ |
-| 8 | K4 Produkt viaže cash (ak živé; inak S2) | S2 5 € denne môže byť kríza |
-| 9 | U8 Vôňa vydrží 6 týždňov (ak živé; inak K8) | S6 Nepošle zákazníkom ani jeden e-mail |
-| 10 | U9 Doprava zdarma od 50 €, objednávka 46 € (ak živé; inak U4) | U11 Objednávka existuje, peniaze nie (ak živé; inak K6 variant) |
-| 11 | K9 Zisk rok po roku klesá (ak živé; inak S8) | Nepovie: „Produkt je sezónny“ |
-| 12 | K8 Produkt, ktorý sa vracia (ak živé; inak U1 variant) | Rekapitulácia: štyri otázky majiteľa |
+| Týždeň | Príspevok A | Príspevok B | Podmienka |
+|---|---|---|---|
+| 1 | K1 Kampaň s vysokým ROAS, stratová (1 000 €) | S7 Každá akcia má výpočet | žiadna |
+| 2 | PMAG/VEL diel 1: top produkt vypredal, systém mlčal | S3 Skôr než radí, overí meranie | žiadna |
+| 3 | Nepovie: „Zvýšte cenu“ | S9 Ak zlyhá import, netvrdí, že problém zmizol | žiadna |
+| 4 | PMAG/VEL diel 2: čo sme zmenili (S1, S5, S10) | Nepovie: „Balíček A + B“ | slice v produkcii |
+| 5 | S4 + K3 + U2 Reklama nefunguje? Pozrite do skladu (skutočná spojená karta) | D1 Produkt je znovu skladom, ale stále skrytý | slice v produkcii, čísla z prehrávky |
+| 6 | U3 Žiadanému produktu dochádzajú zásoby (karta sa pýta, či je tovar na ceste) | K6 Kupóny ničia maržu | pozorovanie V1 pre K6 |
+| 7 | P2 Produkt rýchlo rastie (prvý príbeh o príležitosti) | S2 5 € denne môže byť kríza | čísla z prehrávky |
+| 8 | U5 Košík prepúšťa zákazníkov | Nepovie: „Kategória X predáva zle“ | pozorovanie V1 pre U5 |
+| 9 | U1 Z dôležitého zdroja chodí menej ľudí | S6 Nepošle zákazníkom ani jeden e-mail | pozorovanie V1 pre U1 |
+| 10 | U6 Na mobile ste prestali predávať | Nepovie: „Produkt je sezónny“ | pozorovanie V1 pre U6 |
+| 11 | Prípadová štúdia PMAG/VEL na webe (karty z prehrávky) | S8 Nespočíta stratu trikrát | slice v produkcii |
+| 12 | K4 Produkt viaže cash (ak živé; inak S1 samostatne) | Rekapitulácia: štyri otázky majiteľa | – |
 
-Z každého príspevku vzniká zároveň: 1 e-mail do sekvencie, 1 slide do ukážky, 1 krátke video (60 s) a neskôr 1 reklama.
+Ak slice nebude v produkcii do 4. týždňa, týždne 4, 5, 7 a 11 sa posunú a na ich miesto idú ďalšie diely série „nepovie“ a princípy. Z každého príspevku vzniká zároveň: 1 e-mail do sekvencie, 1 slide do ukážky, 1 krátke video (60 s) a neskôr 1 reklama.
 
 ---
 
 ## 7. Čo potrebujem od zakladateľa
 
-1. **Potvrdiť zoznam živých pravidiel** a ich mapovanie na situácie (príloha 9 zmluvy je neoverená). Od toho závisí, ktoré karty smú von.
-2. **Reálne čísla** pre karty priority 1: K1 (hotové: približne 1 000 €), K3 + U2, U3, U1, U5, U6, K6, P2. Stačí jeden skutočný prípad z Kifra.sk na kartu, hodnoty môžu byť zaokrúhlené.
-3. **Rozhodnutie o príbehu PMAG/VEL** (priznanie zlyhania pôvodného systému ako dôkaz dôslednosti).
-4. **Lokalizácia anglických výrazov v názvoch situácií** pred zobrazením zákazníkom: „Hot seller“, „Emerging bestseller“, „cash“, „traffic“, „landing“, „checkout“, „hidden“. Zmluva vyžaduje jazyk majiteľa; v marketingu ich zatiaľ používame doslovne, aby sedeli s produktom.
-5. **Stav hranice pre kontaktné údaje** (S6): platí už dnes v dátovom sklade, alebo je to len návrh? Podľa toho ju použijeme v odpovedi na námietku o GDPR.
+Vyriešené 18. 9. 2026: stav implementácie (slice V2 + pravidlá V1), súhlas s príbehom PMAG/VEL, lokalizácia názvov (bude), hranica pre kontaktné údaje (platí dnes).
+
+1. **Detaily PMAG/VEL pre diel 1:** názov produktu alebo aspoň jeho podiel na tržbách, koľko dní bol nedostupný, čo v tých dňoch ukazoval pôvodný systém namiesto toho, či naň v tom čase chodila platená návštevnosť. Bez toho sa diel 1 dá napísať len všeobecne.
+2. **Po nasadení slice-u: export z tieňových tabuliek** pre okno 24. až 30. 6. (karty, prvá akcia, dopad, dôkazy, história). Z toho vzniknú čísla pre K3, U2, U3, P2, D1, prípadová štúdia a ukážkové karty do dema.
+3. **Jedno reálne pozorovanie z histórie V1** pre U5 (košík), U6 (mobil), U1 (zdroj návštevnosti) a K6 (kupóny): dátum, čo pravidlo hlásilo, čo sa s tým urobilo. Zaokrúhlené čísla stačia.
+4. **Lokalizované názvy situácií**, keď budú hotové, aby sa karty aktualizovali naraz.
+5. **Rozhodnutie SLICE-OPEN-05** (kde sa zobrazuje karta rastúceho produktu), aby text P2 nesľuboval viac, než produkt ukáže.
+
+---
+
+## Zmeny
+
+- **v1.1 (18. 9. 2026):** zapracovaný plán prvého slice-u V2 (skladový reťazec, platená návštevnosť na nedostupný produkt, spojená karta, pripomienka zviditeľnenia, prehrávka PMAG/VEL); texty kariet z produktu pre štyri situácie zo slice-u; nová doplnková karta D1; nové princípy S9 a S10; PMAG/VEL ako schválený štartovací príbeh; hranica pre kontaktné údaje potvrdená; plán publikovania prerobený podľa dostupných reálnych čísel.
+- **v1 (18. 9. 2026):** prvý návrh.

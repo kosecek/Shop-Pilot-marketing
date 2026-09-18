@@ -1,6 +1,6 @@
-# Shop Pilot – rámec komunikácie so zákazníkmi (v1.2)
+# Shop Pilot – rámec komunikácie so zákazníkmi (v1.3)
 
-Stav: návrh, 18. 9. 2026, v1.2 po zapracovaní odpovedí zakladateľa (cena, integrácie, trhy, referencia, spôsob ukážky, hosting) a zoznamu situácií expertného systému.
+Stav: návrh, 18. 9. 2026, v1.3 po zapracovaní odpovedí zakladateľa (cena, integrácie, trhy, referencia, spôsob ukážky, hosting, stav implementácie, príbeh PMAG/VEL, lokalizácia názvov, kontaktné údaje) a zoznamu situácií expertného systému.
 Cieľ dokumentu: dostať majiteľa e-shopu od „nepoznám vás“ k „chcem vidieť ukážku“ a dať tejto ceste jednotný jazyk.
 
 **Rozhodnutia a fakty, na ktorých dokument stojí (18. 9. 2026):**
@@ -13,7 +13,10 @@ Cieľ dokumentu: dostať majiteľa e-shopu od „nepoznám vás“ k „chcem vi
 | Referencie | Zatiaľ len Kifra.sk: Shop Pilot odhalil kampaň s vysokým ROAS, ktorá bola v skutočnosti stratová; úspora približne 1 000 € |
 | Ukážka | Na mierne upravených reálnych dátach Kifra.sk. Prepojenie dát záujemcu nie je automatizované (niekoľko hodín ručnej práce), preto sa robí až v pilote |
 | Hosting | Google Cloud, každý zákazník má vlastného tenanta (oddelené prostredie); región overiť |
-| Pravidlá expertného systému | 24 aktívnych situácií v návrhu (zmluva v0.51); v produkte dnes bežia pôvodné pravidlá a mapovanie na situácie je neoverené. Obsah sa publikuje len o tom, čo dnes beží. Knižnica: `03-obsahova-kniznica-situacii.md` |
+| Pravidlá expertného systému | 24 aktívnych situácií v návrhu (zmluva v0.51). Práve sa dokončuje prvý slice nového systému V2: skladový reťazec (rastie → dochádzajú zásoby → nedostupný), platená návštevnosť na nedostupný produkt, ich spojená karta a pripomienka zviditeľnenia po naskladnení (nahrádza pravidlá R2, R3, R4, DR4). Zvyšok beží na pôvodných pravidlách V1. Obsah sa publikuje len o tom, čo reálne beží. Knižnica: `03-obsahova-kniznica-situacii.md` |
+| Príbeh PMAG/VEL | Schválený a reálny: top produkt Kifra.sk sa v júni 2026 vypredal a pôvodný systém to nehlásil; incident je trvalý regresný test nového systému. Štartovací príbeh obsahu. |
+| Kontaktné údaje zákazníkov | Shop Pilot ich neukladá a nikoho neoslovuje; platí už dnes. |
+| Názvy situácií | Anglické výrazy v názvoch budú lokalizované; marketing zatiaľ používa texty kariet z produktu, kde existujú. |
 
 ---
 
@@ -195,7 +198,7 @@ Kostra ranného briefingu, ukážky a landing page sú štyri otázky majiteľa 
 - Deterministický expertný systém, žiadne generované odhady.
 - Každé odporúčanie ukáže dáta, z ktorých vzniklo.
 - Read-only prístupy, ktoré kedykoľvek zrušíte; dáta bežia na Google Cloud, každý zákazník má vlastného tenanta (oddelené prostredie); región uviesť po overení.
-- Dôkazy: „ukážte mi výpočet“ priamo v ukážke; verejne opísaná metodika; ukážka na reálnych dátach zakladateľovho e-shopu, nie na vymyslených.
+- Dôkazy: „ukážte mi výpočet“ priamo v ukážke; verejne opísaná metodika; ukážka na reálnych dátach zakladateľovho e-shopu, nie na vymyslených; príbeh PMAG/VEL (incident, ktorý sa stal trvalým testom systému); Shop Pilot neukladá kontaktné údaje zákazníkov.
 
 ### 4.3 Verzie pitchu
 
@@ -293,7 +296,7 @@ Ukážka beží na mierne upravených reálnych dátach Kifra.sk. Na otázku, č
 |---|---|---|
 | 0 – 5 | Otázka: „Aké tri rozhodnutia dnes robíte v Exceli alebo cez päť nástrojov?“ Zapísať ich. Krátko: platforma, reklamné kanály, kto rieši PPC, sklad. | Zistiť jeho bolesti, kvalifikovať (Shoptet? reklama?), získať slová, ktorými to opisuje |
 | 5 – 8 | Príbeh: ráno pred Shop Pilotom (päť záložiek, 40 minút) a stratová kampaň s vysokým ROAS, približne 1 000 €. | Dôvera cez vlastnú skúsenosť |
-| 8 – 18 | Ranný briefing naživo, vedený štyrmi otázkami: Kde strácam? (kampaň stratová po nákladoch), Kde uniká hodnota? (vypredaný produkt s platenou návštevnosťou ako spojená karta: „nezastavujte kampaň naslepo, problém je sklad“), Kde pritlačiť? (produkt s rastúcim dopytom), Môžem veriť dátam? (čo sa stane, keď GA4 nesedí s objednávkami). Pri každej akcii: čo, z čoho, prečo, dopad; kliknúť do kokpitu na jednu z nich. Pri každej sa spýtať: „Stalo sa vám to niekedy?“ | Nech vidí svoj e-shop v našich dátach a pochopí, že nejde o alarm |
+| 8 – 18 | Ranný briefing naživo, vedený štyrmi otázkami: Kde strácam? (kampaň stratová po nákladoch), Kde uniká hodnota? (vypredaný produkt s platenou návštevnosťou ako spojená karta: „nezastavujte kampaň naslepo, problém je sklad“), Kde pritlačiť? (produkt s rastúcim dopytom), Môžem veriť dátam? (čo sa stane, keď GA4 nesedí s objednávkami). Pri každej akcii: čo, z čoho, prečo, dopad; kliknúť do kokpitu na jednu z nich. Pri každej sa spýtať: „Stalo sa vám to niekedy?“ Po nasadení slice-u V2 ukázať skutočné karty z prehrávky PMAG/VEL („toto je skutočné ráno z 27. júna“). | Nech vidí svoj e-shop v našich dátach a pochopí, že nejde o alarm |
 | 18 – 22 | Vrátiť sa k jeho trom rozhodnutiam: ktoré pravidlá by ich pokrývali; čo by videl ráno on. | Preklopenie z „pekné“ na „moje“ |
 | 22 – 27 | Ponuka pilotu (6.4): čo treba z jeho strany, kedy uvidí prvý briefing, cena, garancia, zakladajúci zákazníci. Dohodnúť termín onboardingu hneď na hovore. | Záväzok s termínom |
 | 27 – 30 | Otázky. Po hovore do hodiny e-mail s rekapituláciou a odkazom na prístupy. | Neprerušiť tempo |
@@ -345,7 +348,7 @@ Ručný onboarding stojí niekoľko hodín. Preto ho robíme len pre záujemcov,
 | „Nie som na Shoptete.“ | Zatiaľ podporujeme Shoptet. Nechajte mi platformu a e-mail; poradie ďalších integrácií určuje dopyt. | čakacia listina |
 | „Prečo nie Triple Whale alebo Lifetimely?“ (segment C) | Sú pre Shopify a americké DTC značky s performance tímom, v angličtine a USD, bez Shoptetu, a nepovedia, čo urobiť dnes. | porovnávacia tabuľka (3.3) |
 | „Nebude ma to zahlcovať alarmami?“ | Netriedi podľa výšky sumy, ale podľa termínu: hneď, dnes, tento týždeň, sledovať. Hľadá aj príležitosti (kde pritlačiť), nie len straty. Keď nie sú dáta, mlčí. | ukážka: štyri otázky, príklad príležitosti |
-| „Čo s údajmi mojich zákazníkov (GDPR)?“ | Shop Pilot neukladá kontaktné údaje zákazníkov a nikoho neoslovuje. Povie, koho sa oplatí osloviť; oslovenie robíte vy zo Shoptetu. (overiť stav v dátovom sklade) | stránka o bezpečnosti |
+| „Čo s údajmi mojich zákazníkov (GDPR)?“ | Shop Pilot neukladá kontaktné údaje zákazníkov a nikoho neoslovuje. Povie, koho sa oplatí osloviť; oslovenie robíte vy zo Shoptetu. | stránka o bezpečnosti |
 
 ---
 
@@ -416,32 +419,33 @@ Až po organickom overení hookov (mesiac 3 a neskôr): Meta retargeting na náv
 
 | Týždne | Čo | Výstup |
 |---|---|---|
-| 1 – 2 | Schváliť pozičnú vetu, hooky a ponuku pilotu; pripraviť demo dataset z Kifra.sk a scenár ukážky; landing page v1 (SK, potom CZ); kalkulačka; 3-min video zo záznamu ukážky; 10 pravidiel prepísaných do príspevkov (prvý: stratová kampaň s vysokým ROAS); 200 predkvalifikovaných Shoptet e-shopov | web + magnet + ukážka + obsah na mesiac + zoznam |
+| 1 – 2 | Schváliť pozičnú vetu, hooky a ponuku pilotu; pripraviť demo dataset z Kifra.sk a scenár ukážky; landing page v1 (SK, potom CZ); kalkulačka; 3-min video zo záznamu ukážky; prvé 4 príspevky z knižnice (stratová kampaň, PMAG/VEL diel 1, dva princípy); 200 predkvalifikovaných Shoptet e-shopov | web + magnet + ukážka + obsah na mesiac + zoznam |
 | 3 – 4 | Outbound 1. vlna (100); 4 príspevky v skupinách, 6 na LinkedIn; Upterdam (rozhovory + partneri, Shoptet); prvých 5 ukážok; prví 2 zakladajúci zákazníci v pilote | prvé ukážky, prvé piloty, partnerské rozhovory |
-| 5 – 8 | Vyhodnotiť hooky, upraviť hero; outbound 2. vlna (150, z toho polovica CZ); 2 partnerské piloty; e-mailová sekvencia; 5 pilotov na produkte; zmerať čas onboardingu a začať ho skracovať | overený hook, piloty, dáta o onboardingu |
-| 9 – 12 | Prvá prípadová štúdia (Kifra.sk + prvý zakladajúci zákazník); webinár s partnerom „ROAS nestačí“; SEO články; žiadosť o zaradenie medzi doplnky Shoptetu; test platenej reklamy | cieľ: 10 ukážok mesačne, 5 pilotov mesačne, 10 zakladajúcich zákazníkov |
+| 5 – 8 | Vyhodnotiť hooky, upraviť hero; outbound 2. vlna (150, z toho polovica CZ); 2 partnerské piloty; e-mailová sekvencia; 5 pilotov na produkte; zmerať čas onboardingu a začať ho skracovať; po nasadení slice-u V2 karty z prehrávky PMAG/VEL do dema a PMAG/VEL diel 2 | overený hook, piloty, dáta o onboardingu |
+| 9 – 12 | Prvá prípadová štúdia (PMAG/VEL s kartami z prehrávky + prvý zakladajúci zákazník); webinár s partnerom „ROAS nestačí“; SEO články; žiadosť o zaradenie medzi doplnky Shoptetu; test platenej reklamy | cieľ: 10 ukážok mesačne, 5 pilotov mesačne, 10 zakladajúcich zákazníkov |
 
 ---
 
 ## 11. Otvorené otázky (potrebné od zakladateľa)
 
-Vyriešené v v1.1: cena (100 €), integrácie (Shoptet), trhy (SK a CZ), referencie (Kifra.sk, približne 1 000 €), spôsob ukážky (dáta Kifra.sk), hosting (Google Cloud, vlastný tenant).
+Vyriešené: cena (100 €), integrácie (Shoptet), trhy (SK a CZ), referencia (Kifra.sk, približne 1 000 €), spôsob ukážky (dáta Kifra.sk), hosting (Google Cloud, vlastný tenant), stav implementácie (slice V2 + pravidlá V1), príbeh PMAG/VEL (schválený), lokalizácia názvov (bude), kontaktné údaje zákazníkov (neukladajú sa, platí dnes).
 
 1. **Garancia pilotu:** schváliť alebo zamietnuť „ak za prvý mesiac nenájdeme akciu za viac ako 100 €, vrátime peniaze“ (6.4).
 2. **Program zakladajúcich zákazníkov:** schváliť podmienky (cena natrvalo, spätná väzba, referencia po 3 mesiacoch).
-3. **Bezpečnosť (hosting vyriešený: Google Cloud, vlastný tenant):** doplniť región (EÚ?), aké prístupy presne pilot vyžaduje (Shoptet API, Google Ads, Meta, GA4) a či sú read-only; pripraviť krátky návod na udelenie prístupov a stránku o bezpečnosti.
+3. **Bezpečnosť:** doplniť región (EÚ?), aké prístupy presne pilot vyžaduje (Shoptet API, Google Ads, Meta, GA4) a či sú read-only; pripraviť krátky návod na udelenie prístupov a stránku o bezpečnosti.
 4. **Onboarding:** koľko hodín dnes trvá a čo z toho sa dá automatizovať ako prvé; od toho závisí, kedy sa dá spustiť bezplatná analýza na dátach záujemcu (5.3, bod 5).
 5. **Cena v Kč** pre český web a e-maily.
 6. **Kapacita:** hodiny týždenne na obsah, outbound, ukážky a onboarding; koľko pilotov mesačne je zvládnuteľných.
-7. **Zoznam živých pravidiel:** zoznam situácií je dodaný (zmluva v0.51), ale mapovanie pôvodných pravidiel na situácie je v nej označené ako neoverené. Potrebujem potvrdiť, ktoré situácie produkt dnes reálne pokrýva; od toho závisí, ktoré karty z knižnice smú von.
-8. **Detail príbehu stratovej kampane** pre obsah: kanál (Google alebo Meta), ROAS, skutočná marža, ako dlho bežala, čo sa zmenilo po oprave. Čím konkrétnejšie, tým dôveryhodnejšie.
-9. **Príbeh PMAG/VEL:** rozhodnúť, či sa smie použiť incident z júna 2026 (vypredaný top produkt, ktorý pôvodný systém nehlásil) ako príbeh o dôslednosti (knižnica, kap. 4).
-10. **Lokalizácia anglických výrazov v názvoch situácií** (Hot seller, Emerging bestseller, cash, traffic, landing, checkout, hidden) pred zobrazením zákazníkom; marketing ich zatiaľ používa doslovne, aby sedeli s produktom.
+7. **Detail príbehu stratovej kampane** pre obsah: kanál (Google alebo Meta), ROAS, skutočná marža, ako dlho bežala, čo sa zmenilo po oprave. Čím konkrétnejšie, tým dôveryhodnejšie.
+8. **Detaily PMAG/VEL pre diel 1 príbehu:** podiel produktu na tržbách, dni nedostupnosti, čo v tých dňoch hlásil pôvodný systém, či naň chodila platená návštevnosť.
+9. **Po nasadení slice-u V2:** export kariet z tieňových tabuliek pre 24. až 30. 6. (do dema, prípadovej štúdie a knižnice) a rozhodnutie, kde sa zobrazuje karta rastúceho produktu (SLICE-OPEN-05).
+10. **Jedno reálne pozorovanie z histórie V1** pre košík, mobil, zdroj návštevnosti a kupóny, aby aj tieto príbehy mali číslo.
 
 ---
 
 ## Zmeny
 
+- **v1.3 (18. 9. 2026):** zapracovaný stav implementácie (prvý slice V2 nahrádza R2, R3, R4, DR4; zvyšok V1), schválený príbeh PMAG/VEL ako štartovací obsah a zdroj skutočných kariet do dema, potvrdená hranica pre kontaktné údaje, lokalizácia názvov v pláne. Otvorené otázky prečíslované.
 - **v1.2 (18. 9. 2026):** zapracovaný zoznam situácií expertného systému (zmluva v0.51, 24 aktívnych situácií): štyri otázky majiteľa ako kostra posolstiev, ukážky a landing page; nová obsahová knižnica `03-obsahova-kniznica-situacii.md` s publikačným pravidlom „len to, čo produkt dnes robí“; opravené texty, ktoré sľubovali mapovanie kampane na produkt (produkt vidí platenú návštevnosť na stránke nedostupného produktu a odporúča dočasné skrytie); nové námietky (alarmy, GDPR).
 - **v1.1 (18. 9. 2026):** zapracované odpovede zakladateľa: cena 100 € (jedno pásmo), integrácia len Shoptet, trhy SK a CZ, referencia Kifra.sk (stratová kampaň s vysokým ROAS, úspora približne 1 000 €), ukážka na dátach Kifra.sk namiesto analýzy na dátach záujemcu, hosting Google Cloud s vlastným tenantom pre každého zákazníka. Pridaný scenár ukážky (6.3), ponuka pilotu a program zakladajúcich zákazníkov (6.4), čakacia listina pre platformy, česká verzia textov v pláne.
 - **v1 (18. 9. 2026):** prvý návrh.
